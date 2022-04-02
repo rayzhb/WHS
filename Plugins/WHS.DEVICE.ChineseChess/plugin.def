@@ -1,0 +1,6 @@
+<plugin>
+   <file name="WHS.DEVICE.ChineseChess.dll"/>
+  <!--anycpu  x64 x86  arm arm64 wasm -->
+  <runPlatform target="anycpu" />
+  <enableHotReload>true</enableHotReload>
+</plugin>

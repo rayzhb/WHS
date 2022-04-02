@@ -1,0 +1,68 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LottieSharp" Version="1.1.3" />
+    <PackageReference Include="MahApps.Metro.IconPacks.FontAwesome" Version="4.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\WHS.Infrastructure\WHS.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Strings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Strings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Assets\Gears.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\Hello World.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\loading...json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\lottiefiles.com - Star Wars Rey.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\Spider Loader.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\TwitterHeart.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="plugin.def">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="mkdir $(SolutionDir)$(OutDir)Plugins\WHS.App.Animation\&#xD;&#xA;&#xD;&#xA;mkdir $(SolutionDir)$(OutDir)Plugins\WHS.App.Animation\en&#xD;&#xA;xcopy  /y /s /e  &quot;$(TargetDir)en&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.App.Animation\en\&quot;&#xD;&#xA;&#xD;&#xA; &#xD;&#xA;mkdir $(SolutionDir)$(OutDir)Plugins\WHS.App.Animation\zh-CN&#xD;&#xA;xcopy  /y /s /e  &quot;$(TargetDir)zh-CN&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.App.Animation\zh-CN\&quot;&#xD;&#xA;&#xD;&#xA;mkdir $(SolutionDir)$(OutDir)Plugins\WHS.App.Animation\Assets&#xD;&#xA;xcopy  /y /s /e  &quot;$(TargetDir)Assets&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.App.Animation\Assets\&quot;&#xD;&#xA;&#xD;&#xA;xcopy /y &quot;$(TargetDir)&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.App.Animation\&quot; &#xD;&#xA;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.App.Animation\WHS.App.Animation.deps.json&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.App.Animation\Caliburn.Micro.Core.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.App.Animation\Caliburn.Micro.Platform.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.App.Animation\ControlzEx.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.App.Animation\MahApps.Metro.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.App.Animation\MahApps.Metro.IconPacks.Core.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.App.Animation\MahApps.Metro.IconPacks.FontAwesome.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.App.Animation\Microsoft.DotNet.PlatformAbstractions.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.App.Animation\Microsoft.Extensions.DependencyModel.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.App.Animation\Microsoft.Xaml.Behaviors.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.App.Animation\Newtonsoft.Json.Bson.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.App.Animation\Newtonsoft.Json.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.App.Animation\NLog.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.App.Animation\Polly.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.App.Animation\System.IO.Ports.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.App.Animation\System.Management.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.App.Animation\System.Net.Http.Formatting.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.App.Animation\WHS.Infrastructure.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.App.Animation\WHS.Infrastructure.pdb&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.App.Animation\WPFLocalizeExtension.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.App.Animation\WPFLocalizeExtension.pdb&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.App.Animation\XAMLMarkupExtensions.dll&quot;" />
+  </Target>
+</Project>

@@ -1,0 +1,9 @@
+<Project>
+  <!-- Empty to prevent directory crawling. -->
+  <PropertyGroup>
+    <Authors>rayzhb(bbaxx1314@qq.com)</Authors>
+    <Copyright>Copyright RAYZHB ©  2021</Copyright>
+    <Description>硬件测试平台,包含插件开发.</Description>
+    <PackageReleaseNotes>硬件测试平台,包含插件开发.</PackageReleaseNotes>
+  </PropertyGroup>
+</Project>

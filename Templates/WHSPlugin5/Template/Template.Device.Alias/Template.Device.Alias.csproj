@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MahApps.Metro.IconPacks.FontAwesome" Version="4.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\WHS.Infrastructure\WHS.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Strings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Strings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="plugin.def">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="mkdir $(SolutionDir)$(OutDir)Plugins\Template.Device.Alias\&#xD;&#xA;&#xD;&#xA;mkdir $(SolutionDir)$(OutDir)Plugins\Template.Device.Alias\en&#xD;&#xA;xcopy  /y /s /e  &quot;$(TargetDir)en&quot; &quot;$(SolutionDir)$(OutDir)Plugins\Template.Device.Alias\en\&quot;&#xD;&#xA;&#xD;&#xA; &#xD;&#xA;mkdir $(SolutionDir)$(OutDir)Plugins\Template.Device.Alias\zh-CN&#xD;&#xA;xcopy  /y /s /e  &quot;$(TargetDir)zh-CN&quot; &quot;$(SolutionDir)$(OutDir)Plugins\Template.Device.Alias\zh-CN\&quot;&#xD;&#xA;&#xD;&#xA;xcopy /y &quot;$(TargetDir)&quot; &quot;$(SolutionDir)$(OutDir)Plugins\Template.Device.Alias\&quot; &#xD;&#xA;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\Template.Device.Alias\Template.Device.Alias.deps.json&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\Template.Device.Alias\Caliburn.Micro.Core.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\Template.Device.Alias\Caliburn.Micro.Platform.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\Template.Device.Alias\ControlzEx.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\Template.Device.Alias\MahApps.Metro.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\Template.Device.Alias\MahApps.Metro.IconPacks.Core.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\Template.Device.Alias\MahApps.Metro.IconPacks.FontAwesome.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\Template.Device.Alias\Microsoft.DotNet.PlatformAbstractions.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\Template.Device.Alias\Microsoft.Extensions.DependencyModel.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\Template.Device.Alias\Microsoft.Xaml.Behaviors.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\Template.Device.Alias\Newtonsoft.Json.Bson.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\Template.Device.Alias\Newtonsoft.Json.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\Template.Device.Alias\NLog.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\Template.Device.Alias\Polly.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\Template.Device.Alias\System.IO.Ports.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\Template.Device.Alias\System.Management.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\Template.Device.Alias\System.Net.Http.Formatting.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\Template.Device.Alias\WHS.Infrastructure.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\Template.Device.Alias\WHS.Infrastructure.pdb&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\Template.Device.Alias\WPFLocalizeExtension.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\Template.Device.Alias\WPFLocalizeExtension.pdb&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\Template.Device.Alias\XAMLMarkupExtensions.dll&quot;" />
+  </Target>
+</Project>

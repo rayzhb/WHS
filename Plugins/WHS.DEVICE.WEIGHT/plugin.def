@@ -1,0 +1,5 @@
+<plugin>
+   <file name="WHS.DEVICE.WEIGHT.dll"/>
+  <!--anycpu x64 x86  arm arm64 wasm -->
+  <runPlatform target="anycpu" />
+</plugin>

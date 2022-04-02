@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <LangVersion>9.0</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;FEATURE_UNLOAD;FEATURE_NATIVE_RESOLVER</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>TRACE;FEATURE_UNLOAD;FEATURE_NATIVE_RESOLVER</DefineConstants>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Caliburn.Micro" Version="4.0.136-rc" />
+    <PackageReference Include="Caliburn.Micro.Core" Version="4.0.136-rc" />
+    <PackageReference Include="MahApps.Metro" Version="2.4.5" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+    <PackageReference Include="Microsoft.DotNet.PlatformAbstractions" Version="3.1.6" />
+    <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="5.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="NLog" Version="4.7.9" />
+    <PackageReference Include="Polly" Version="7.2.2" />
+    <PackageReference Include="System.IO.Ports" Version="5.0.1" />
+    <PackageReference Include="System.Management" Version="5.0.0" />
+    <!--<PackageReference Include="WPFLocalizeExtension" Version="3.8.0" />-->
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WPFLocalizationExtension\WPFLocalizeExtension.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Collections\" />
+  </ItemGroup>
+
+</Project>

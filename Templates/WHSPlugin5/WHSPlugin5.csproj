@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageType>Template</PackageType>
+    <PackageVersion>1.0</PackageVersion>
+    <PackageId>WHSPlugin5</PackageId>
+    <Title>WHSPlugin5</Title>
+    <Authors>rayzhb</Authors>
+    <Description>WHS Device Plugin 5.0</Description>
+    <PackageTags>WHSPlugin5</PackageTags>
+    <TargetFrameworks>netstandard2.0;net5.0-windows</TargetFrameworks>
+    <IncludeContentInPack>true</IncludeContentInPack>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <ContentTargetFolders>content</ContentTargetFolders>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Version>1.0.0</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+ 
+  <ItemGroup>
+    <Content Include="Template\**\*" Exclude="Template\**\bin\**;Template\**\obj\**" />
+    <Compile Remove="**\*" />
+  </ItemGroup>
+ 
+  <ItemGroup Condition="'$(TargetFramework)' == 'net5.0-windows'">
+    <PackageReference Include="System.Resources.Extensions" Version="6.0.0" />
+  </ItemGroup>
+ 
+  <ItemGroup>
+    <Content Update="Template\Template.Device.Alias\Resources\Strings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Content>
+    <Content Update="Template\Template.Device.Alias\Resources\Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+ 
+</Project>

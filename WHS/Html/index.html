@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title>ws-test-page</title>
+    <!-- Bootstrap core CSS -->
+    <link href="./assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="jumbotron-narrow.css" rel="stylesheet">
+    <script src="./assets/bootstrap/js/jquery-1.12.4.min.js"></script>
+    <script src="./assets/bootstrap/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="./assets/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]>
+    <script src="./assets/bootstrap/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="./assets/bootstrap/js/ie-emulation-modes-warning.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="./assets/bootstrap/js/ie10-viewport-bug-workaround.js"></script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+        var ws;
+
+        $(document).ready(function () {
+            $("#msgToServer").val("{" +
+                "\"Params\": { " +
+                "\"TrackingNumber\": \"asdfafsadf\",\"OrderId\":\"123131232\",\"CartonNumber\":\"1111\",\"DisplayString\":\"测试\" "+
+                ", \"VideoInfoDetails\": [{\"DisplayString\": \"432423423523---------24242349--------------53534\"}]"+
+                "}," +
+                "\"ID\": \"c7dfb304-f78e-498e-95e4-d956b7ff7cdf\"," +
+                "\"Action\": \"camera_open\"" +
+                "}");
+        });
+
+        function connectToServer() {
+            var icon = document.getElementById("connection_error_icon");
+
+            try {
+                ws = new WebSocket(document.getElementById("serverSelected").value);
+
+                ws.onopen = function () {
+                    document.getElementById("connectionStatus").innerHTML = "连接";
+                };
+                ws.onmessage = function (event) {
+                    console.log(event);
+                    document.getElementById("responseFromServer").value = event.data;
+                };
+                ws.onclose = function () {
+                    document.getElementById("connectionStatus").innerHTML = "断开";
+                };
+                icon.style.visibility = "hidden";
+                icon.title = '';
+            } catch (e) {
+                icon.style.visibility = "visible";
+                icon.title = e.message;
+            }
+        }
+        function disconnectToServer() {
+            ws.close();
+        }
+        function sendMessage() {
+            var icon = document.getElementById("error_icon");
+            try {
+                var msgObj = JSON.parse(document.getElementById("msgToServer").value);
+                ws.send(JSON.stringify(msgObj));
+                icon.style.visibility = "hidden";
+                icon.title = '';
+            } catch (e) {
+                icon.style.visibility = "visible";
+                icon.title = e.message;
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h3 class="text-muted">websocket网页自测1.0</h3>
+        </div>
+        <div class="jumbotron_">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="serverSelected" class="col-sm-2 control-label">地址:</label>
+                    <div class="col-sm-7">
+                        <input type="text" id="serverSelected" class="form-control" placeholder="ws://domain/path" value="ws://127.0.0.1:18080/websocket" />
+                    </div>
+                    <div class="col-sm-1" style="margin-right: 10px;">
+                        <button type="button" class="btn btn-sm btn-primary" onclick="connectToServer()">
+                            连接
+                        </button>
+                    </div>
+                    <div class="col-sm-1">
+                        <button type="button" class="btn btn-sm btn-danger" onclick="disconnectToServer()">
+                            断开
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- /.row -->
+        <div class="input-group">
+            连接状态:
+            <span id="connectionStatus">
+                断开
+            </span>
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" id="connection_error_icon" style="color:#c9302c; visibility: hidden"></span>
+        </div>
+        <!-- /.row -->
+        <textarea id="msgToServer" style="width: 700px; height: 300px" placeholder="Put your Message Here"></textarea>
+        <button type="button" class="btn btn-sm btn-success" onclick="sendMessage()">
+            发送消息
+        </button>
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" id="error_icon" style="color:#c9302c; visibility: hidden"></span>
+        <br><br>
+        <textarea id="responseFromServer" placeholder="Response From Server" style="width: 700px; height: 300px"
+                  readonly>
+          </textarea>
+    </div>
+    <!-- /container -->
+</body>
+</html>

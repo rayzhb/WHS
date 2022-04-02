@@ -1,0 +1,187 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <!--<UseWindowsForms>true</UseWindowsForms>-->
+    <StartupObject>WHS.App</StartupObject>
+    <ApplicationIcon>whs.ico</ApplicationIcon>
+    <Win32Resource />
+    <!--<RuntimeIdentifier>win-x86</RuntimeIdentifier>
+    <PublishSingleFile>True</PublishSingleFile>
+    <IncludeContentInSingleFile>true</IncludeContentInSingleFile>-->
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Prefer32Bit>true</Prefer32Bit>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="whs.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotNetty.Codecs.Http" Version="0.7.0" />
+    <PackageReference Include="DotNetty.Transport.Libuv" Version="0.7.0" />
+    <PackageReference Include="MahApps.Metro.IconPacks.FontAwesome" Version="4.8.0" />
+    <PackageReference Include="NLog.Config" Version="4.7.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core\WHS.Infrastructure\WHS.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="whs.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Html\assets\bootstrap\css\bootstrap-responsive.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+
+    </None>
+    <None Update="Html\assets\bootstrap\css\bootstrap-responsive.min.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\assets\bootstrap\css\bootstrap-theme.css.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\assets\bootstrap\css\bootstrap-theme.min.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\assets\bootstrap\css\bootstrap.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\assets\bootstrap\css\bootstrap.css.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\assets\bootstrap\css\bootstrap.min.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\assets\bootstrap\css\theme.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\assets\bootstrap\fonts\glyphicons-halflings-regular.eot">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\assets\bootstrap\fonts\glyphicons-halflings-regular.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\assets\bootstrap\fonts\glyphicons-halflings-regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\assets\bootstrap\fonts\glyphicons-halflings-regular.woff">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\assets\bootstrap\fonts\glyphicons-halflings-regular.woff2">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\assets\bootstrap\js\bootstrap.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\assets\bootstrap\js\bootstrap.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\assets\bootstrap\js\docs.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\assets\bootstrap\js\ie-emulation-modes-warning.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\assets\bootstrap\js\ie10-viewport-bug-workaround.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\assets\bootstrap\js\jquery-1.12.4.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\assets\bootstrap\js\jquery-1.12.4.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\assets\bootstrap\js\jquery-migrate-1.2.1.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\assets\bootstrap\js\jquery-migrate-1.2.1.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\config.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\css\app.77e75062.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\css\app.d6601f71.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\css\app.d790abb0.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\css\chunk-vendors.8140bef9.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\favicon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\fonts\element-icons.535877f5.woff">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\fonts\element-icons.732389de.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\img\AGV4.18bac90f.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\index.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\js\app.03cceb14.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\js\app.03cceb14.js.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\js\app.15df423a.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\js\app.15df423a.js.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\js\app.7a457139.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\js\app.7a457139.js.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\js\chunk-vendors.3c33c64e.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\js\chunk-vendors.3c33c64e.js.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\jumbotron-narrow.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Html\vue_rcs.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Condition="'$(Configuration)' != 'Release'" Update="NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Condition="'!$(Configuration)' != 'Release'" Update="Plugins\Readme.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory><ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+</Project>

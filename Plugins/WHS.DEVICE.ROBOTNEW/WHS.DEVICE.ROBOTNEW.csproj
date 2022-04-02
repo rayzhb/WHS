@@ -1,0 +1,71 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\car.png" />
+    <None Remove="Images\向上.png" />
+    <None Remove="Views\car.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Advanced.Algorithms" Version="0.0.485-beta" />
+    <PackageReference Include="MahApps.Metro.IconPacks.FontAwesome" Version="4.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\WHS.Infrastructure\WHS.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="DijkstraAlgorithm">
+      <HintPath>..\..\ShareDlls\DijkstraAlgorithm.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\car.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="plugin.def">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Strings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SignatureView - 复制.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>SignatureView.xaml.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="&#xD;&#xA;mkdir $(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOTNEW\&#xD;&#xA;&#xD;&#xA;mkdir $(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOTNEW\en&#xD;&#xA;xcopy  /y /s /e  &quot;$(TargetDir)en&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOTNEW\en\&quot;&#xD;&#xA;&#xD;&#xA; &#xD;&#xA;mkdir $(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOTNEW\zh-CN&#xD;&#xA;xcopy  /y /s /e  &quot;$(TargetDir)zh-CN&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOTNEW\zh-CN\&quot;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;xcopy /y &quot;$(TargetDir)Advanced.Algorithms.dll&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOTNEW\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)DijkstraAlgorithm.dll&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOTNEW\&quot;&#xD;&#xA;&#xD;&#xA;xcopy /y &quot;$(TargetDir)WHS.DEVICE.ROBOTNEW.dll&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOTNEW\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)WHS.DEVICE.ROBOTNEW.pdb&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOTNEW\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)plugin.def&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOTNEW&quot;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" />
+  </Target>
+
+</Project>

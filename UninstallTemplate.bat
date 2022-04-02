@@ -1,0 +1,1 @@
+dotnet new -u %cd%\Templates\WHSPlugin5\Template

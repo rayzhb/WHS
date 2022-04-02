@@ -1,0 +1,84 @@
+﻿<Page x:Class="WHS.App.Animation.Views.MainView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WHS.App.Animation.Views"
+      xmlns:cal="http://www.caliburnproject.org"
+                  xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+           xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com"
+      xmlns:lottieSharp="clr-namespace:LottieSharp;assembly=LottieSharp"
+                  xmlns:ViewModels="clr-namespace:WHS.App.Animation.ViewModels"
+      lex:LocalizeDictionary.DesignCulture="zh-CN"
+             lex:LocalizeDictionary.OutputMissingKeys="True"
+             lex:ResxLocalizationProvider.DefaultAssembly="WHS.App.Animation"
+             lex:ResxLocalizationProvider.DefaultDictionary="Strings"
+             mc:Ignorable="d" 
+              Title="{Binding Path=ImageDrawable.Fps, ElementName=LottieAnimationView}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Page.DataContext>
+        <ViewModels:MainViewModel/>
+    </Page.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <lottieSharp:LottieAnimationView x:Name="TestLottie" DefaultCacheStrategy="None" 
+                                         FileName="{Binding SelectedValue, ElementName=CB_Source}"
+                                         VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Slider Grid.Row="1" Maximum="10" Value="1" Minimum="0.1" SmallChange="0.1" LargeChange="0.1"
+                cal:Message.Attach="[Event ValueChanged] = [Action Slider_ValueChanged_1($source,$eventArgs)]"/>
+        <Slider Grid.Row="2" Minimum="0" Maximum="1000" SmallChange="1" 
+                cal:Message.Attach="[Event ValueChanged] = [Action Slider_ValueChanged($source,$eventArgs)]"/>
+
+        <DockPanel Grid.Row="3" Margin="5">
+            <Button DockPanel.Dock="Left" 
+                    cal:Message.Attach="[Event Click] = [Action PauseAnimation_Click($source,$eventArgs)]"
+                    HorizontalAlignment="Left">
+                <StackPanel>
+                    <iconPacks:PackIconFontAwesome  Width="24" Height="24" Kind="StopCircleRegular" />
+                </StackPanel>
+            </Button>
+            <Button DockPanel.Dock="Left" Margin="10,0,0,0"
+                      cal:Message.Attach="[Event Click] = [Action StartAnimation_Click($source,$eventArgs)]"
+                    HorizontalAlignment="Left" >
+                <StackPanel>
+                    <iconPacks:PackIconFontAwesome Width="24" Height="24" Kind="PlayCircleRegular" />
+                </StackPanel>
+            </Button>
+            <Button DockPanel.Dock="Left"  Margin="10,0,0,0" 
+                    cal:Message.Attach="[Event Click] = [Action LoadAnimation_Click($source,$eventArgs)]"
+                    HorizontalAlignment="Left">
+                <StackPanel>
+                    <iconPacks:PackIconFontAwesome Width="24" Height="24" Kind="AlignJustifySolid" />
+                </StackPanel>
+            </Button>
+
+            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" Width="110" HorizontalAlignment="Right">
+                <TextBlock Text="Fps: " Width="30"></TextBlock>
+                <TextBox Text="{Binding FrameRate, ElementName=LottieAnimationView, Mode=TwoWay}" Width="80"/>
+            </StackPanel>
+        </DockPanel>
+
+
+        <ComboBox x:Name="CB_Source"  Margin="5"  Grid.Row="4"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                   Width="auto" Height="auto" 
+                       Controls:TextBoxHelper.Watermark="{lex:Loc Key=MainView.Combobox.Watermark}"
+                          DisplayMemberPath="Text"
+                          IsEditable="False"
+                          IsEnabled="True"
+                          ItemsSource="{Binding AnimationSource}"
+                          SelectedValuePath="Value"
+                          SelectedIndex="{Binding AdnimationIndex, Mode=TwoWay}"
+                         >
+        </ComboBox>
+
+
+    </Grid>
+</Page>

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "WHS.DEVICE.ROBOTNEW": {
+      "commandName": "Executable",
+      "executablePath": "E:\\ray-projects\\仓储硬件服务\\WHS-NET5\\bin\\Debug\\net5.0-windows\\WHS.exe"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WHS.DEVICE.ROBOTNEW.Views"
+             xmlns:ViewModels="clr-namespace:WHS.DEVICE.ROBOTNEW.ViewModels" x:Class="WHS.DEVICE.ROBOTNEW.Views.AGVUCView"
+             mc:Ignorable="d" 
+             d:DesignHeight="128" d:DesignWidth="128"  Width="{Binding Width}"  Height="{Binding Height}"
+    Padding="1,1,1,1" Opacity="0.8">
+    <UserControl.DataContext>
+        <ViewModels:AGVUCViewModel/>
+    </UserControl.DataContext>
+    <Grid>
+        <Image ToolTip="{Binding Code}" Stretch="Uniform" Source="{Binding ImageSource}"  x:Name="img"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,108 @@
+﻿<UserControl x:Class="WHS.Views.Flyouts.FlyoutPluginManageView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WHS.Views.Flyouts"
+                   xmlns:lex="http://wpflocalizeextension.codeplex.com"
+                       xmlns:cal="http://www.caliburnproject.org"
+          lex:LocalizeDictionary.DesignCulture="zh-CN"
+             lex:LocalizeDictionary.OutputMissingKeys="True"
+             lex:ResxLocalizationProvider.DefaultAssembly="WHS"
+             lex:ResxLocalizationProvider.DefaultDictionary="Strings" 
+             lex:ResxLocalizationProvider.IgnoreCase="False"
+             xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             mc:Ignorable="d" 
+             Width="500"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <Thickness x:Key="ControlMargin">0 5 0 0</Thickness>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Margin="{StaticResource ControlMargin}"
+                        HorizontalAlignment="Center"
+                        Orientation="Horizontal">
+            <StackPanel.Resources>
+                <Style x:Key="AccentCircleButtonStyle"
+                           BasedOn="{StaticResource MahApps.Styles.Button.Circle}"
+                           TargetType="{x:Type ButtonBase}">
+                    <Setter Property="Foreground" Value="{DynamicResource AccentColorBrush}" />
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" Value="{DynamicResource AccentColorBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="{DynamicResource GrayBrush7}" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </StackPanel.Resources>
+            <Button Width="48"
+                        Height="48"
+                        Margin="4"
+                        Style="{StaticResource AccentCircleButtonStyle}" cal:Message.Attach="[Event Click] = [Action RefreshGrid()]">
+                <iconPacks:FontAwesome Width="20"
+                                              Height="20"
+                                              Kind="RedoAltSolid" />
+            </Button>
+            <Button Width="48"
+                        Height="48"
+                        Margin="4"
+                        Style="{StaticResource AccentCircleButtonStyle}" cal:Message.Attach="[Event Click] = [Action DeepRefreshGrid()]">
+                <iconPacks:FontAwesome Width="20"
+                                              Height="20" 
+                                              Kind="SyncAltSolid" />
+            </Button>
+        </StackPanel>
+        <DataGrid x:Name="LoadedPluginModels"
+                  Grid.Row="3"
+                  Grid.Column="1"
+                  Margin="5"
+                  AutoGenerateColumns="False"
+                  ItemsSource="{Binding Path=LoadedPluginModels}"
+                  RowHeaderWidth="0" SelectionUnit="FullRow" CanUserAddRows="False"
+                  Style="{DynamicResource AzureDataGrid}">
+            <DataGrid.Columns>
+                <!--<DataGridTextColumn Binding="{Binding Id}" Header="编号" />-->
+                <DataGridTextColumn Binding="{Binding Name}" >
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="{lex:Loc Key=FlyoutPluginManageView.Datagrid.Name}"></TextBlock>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding VersionString}" >
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="{lex:Loc Key=FlyoutPluginManageView.Datagrid.VersionString}"></TextBlock>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Manufacturer}" >
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="{lex:Loc Key=FlyoutPluginManageView.Datagrid.Manufacturer}"></TextBlock>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding IsDisplay}">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="{lex:Loc Key=FlyoutPluginManageView.Datagrid.IsDisplay}"></TextBlock>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.Header>
+                        <TextBlock Text="{lex:Loc Key=FlyoutPluginManageView.Datagrid.OP}"></TextBlock>
+                    </DataGridTemplateColumn.Header>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button  Content="{Binding BtnContent}" cal:Message.Attach="[Event Click] = [Action BtnPlugin($dataContext)]" cal:Bind.Model="{Binding Path=DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType=DataGridCell}}" />
+                                <Button Visibility="{Binding UnloadBtnVisibility}" Content="卸载" cal:Message.Attach="[Event Click] = [Action Unload($dataContext)]" cal:Bind.Model="{Binding Path=DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType=DataGridCell}}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

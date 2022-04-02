@@ -1,0 +1,8 @@
+<plugin>
+  <!--主程序所在的DLL -->
+   <file name="WHS.DEVICE.ROBOT3D.dll"/>
+  <!--运行平台:anycpu  x64 x86  arm arm64 wasm -->
+  <runPlatform target="anycpu" />
+  <!--本节点用于配置是否热加载 -->
+  <enableHotReload>true</enableHotReload>
+</plugin>

@@ -1,0 +1,80 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HelixToolkit.SharpDX.Core.Wpf" Version="2.17.0" />
+    <PackageReference Include="MahApps.Metro.IconPacks.FontAwesome" Version="4.8.0" />
+    <PackageReference Include="PropertyTools.Wpf" Version="3.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\WHS.Infrastructure\WHS.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Strings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Strings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="plugin.def">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TextureCheckerboard2.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TextureCheckerboard2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TextureCheckerboard2_dot3.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TextureCheckerboard2_dot3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TextureCheckerboard3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TextureNoise1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TextureNoise1_dot3.dds">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TextureNoise1_dot3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Actions\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="&#xD;&#xA;mkdir $(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOT3D\&#xD;&#xA;&#xD;&#xA;mkdir $(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOT3D\en&#xD;&#xA;xcopy  /y /s /e  &quot;$(TargetDir)en&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOT3D\en\&quot;&#xD;&#xA;&#xD;&#xA; &#xD;&#xA;mkdir $(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOT3D\zh-CN&#xD;&#xA;xcopy  /y /s /e  &quot;$(TargetDir)zh-CN&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOT3D\zh-CN\&quot;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;xcopy /y &quot;$(TargetDir)Cyotek.Drawing.BitmapFont.dll&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOT3D\&quot;&#xD;&#xA;&#xD;&#xA;xcopy /y &quot;$(TargetDir)HelixToolkit.dll&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOT3D\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)HelixToolkit.SharpDX.Core.dll&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOT3D\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)HelixToolkit.SharpDX.Core.WPF.dll&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOT3D\&quot;&#xD;&#xA;&#xD;&#xA;xcopy /y &quot;$(TargetDir)PropertyTools.dll&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOT3D\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)PropertyTools.Wpf.dll&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOT3D\&quot;&#xD;&#xA;&#xD;&#xA;xcopy /y &quot;$(TargetDir)SharpDX.D3DCompiler.dll&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOT3D\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)SharpDX.Direct2D1.dll&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOT3D\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)SharpDX.Direct3D9.dll&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOT3D\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)SharpDX.Direct3D11.dll&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOT3D\&quot;&#xD;&#xA;&#xD;&#xA;xcopy /y &quot;$(TargetDir)SharpDX.dll&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOT3D\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)SharpDX.DXGI.dll&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOT3D\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)SharpDX.Mathematics.dll&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOT3D\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)SharpDX.Direct3D11.dll&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOT3D\&quot;&#xD;&#xA;&#xD;&#xA;xcopy /y &quot;$(TargetDir)TextureCheckerboard2.dds&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOT3D\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)TextureCheckerboard2.jpg&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOT3D\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)TextureCheckerboard2_dot3.dds&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOT3D\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)TextureCheckerboard2_dot3.jpg&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOT3D\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)TextureCheckerboard3.jpg&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOT3D\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)TextureNoise1.jpg&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOT3D\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)TextureNoise1_dot3.dds&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOT3D\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)TextureNoise1_dot3.jpg&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOT3D\&quot;&#xD;&#xA;&#xD;&#xA;xcopy /y &quot;$(TargetDir)WHS.DEVICE.ROBOT3D.dll&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOT3D\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)WHS.DEVICE.ROBOT3D.pdb&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOT3D\&quot;&#xD;&#xA;xcopy /y &quot;$(TargetDir)plugin.def&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.DEVICE.ROBOT3D&quot;" />
+  </Target>
+</Project>
