@@ -25,7 +25,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Solution Items", ".Solutio
 		.gitignore = .gitignore
 		Directory.Build.props = Directory.Build.props
 		Directory.Build.targets = Directory.Build.targets
-		global.json = global.json
 		LICENSE = LICENSE
 		NuGet.config = NuGet.config
 		README.md = README.md
@@ -219,7 +218,7 @@ Global
 		{BA0EE725-D5CA-4788-9FE8-F2DE503D556B} = {A78E83AB-E031-4857-9C94-BDACD13921EF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {86204554-1357-45A5-A82C-A85E5C87900D}
 		VisualSVNWorkingCopyRoot = .
+		SolutionGuid = {86204554-1357-45A5-A82C-A85E5C87900D}
 	EndGlobalSection
 EndGlobal
