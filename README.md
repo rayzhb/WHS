@@ -6,6 +6,7 @@
 
 [中文文档](https://whs.ray-zhb.com)
 
+[NET5](https://github.com/rayzhb/WHS/tree/net5)
 
 ## 介绍
 
