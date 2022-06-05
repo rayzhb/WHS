@@ -13,7 +13,7 @@
     <RootNamespace>WHSDocumentation</RootNamespace>
     <Name>WHSDocumentation</Name>
     <!-- SHFB properties -->
-    <FrameworkVersion>.NET Portable Library 5.0</FrameworkVersion>
+    <FrameworkVersion>.NET Core/.NET Standard/.NET 5.0+</FrameworkVersion>
     <OutputPath>.\Help\</OutputPath>
     <HtmlHelpName>WHSDocumentation</HtmlHelpName>
     <Language>zh-CN</Language>
@@ -27,6 +27,7 @@
       <Argument Key="maxVersionParts" Value="" xmlns="" />
     </TransformComponentArguments>
     <DocumentationSources>
+      <DocumentationSource sourceFile="..\..\Core\WHS.Infrastructure\WHS.Infrastructure.csproj" />
     </DocumentationSources>
     <HelpFileFormat>HtmlHelp1</HelpFileFormat>
     <SyntaxFilters>C#</SyntaxFilters>
