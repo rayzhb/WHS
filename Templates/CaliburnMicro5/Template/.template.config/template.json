@@ -2,9 +2,9 @@
   "$schema": "http://json.schemastore.org/template",
   "author": "rayzhb",
   "classifications": [ "wpf" ],
-  "name": "CaliburnMicro5",
-  "identity": "CaliburnMicro5",
-  "groupIdentity": "CaliburnMicro5",
+  "name": "CaliburnMicro6",
+  "identity": "CaliburnMicro6",
+  "groupIdentity": "CaliburnMicro6",
   "shortName": "CM5",
   "tags": {
     "language": "C#",
