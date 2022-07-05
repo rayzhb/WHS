@@ -2,10 +2,10 @@
   "$schema": "http://json.schemastore.org/template",
   "author": "rayzhb",
   "classifications": [ "wpflib" ],
-  "name": "WHS Device Plugin 5.0",
+  "name": "WHS Device Plugin 6.0",
   "identity": "Template.Device.Alias",
   "groupIdentity": "Template.Device.Alias",
-  "shortName": "WHS5",
+  "shortName": "WHS6",
   "tags": {
     "language": "C#",
     "type": "project"
