@@ -207,22 +207,16 @@
         <File Id="WIX_45" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\img\AGV4.18bac90f.png" ProcessorArchitecture="x86" KeyPath="yes" />
       </Component>
       <Component Id="WIX_47" Directory="WIX_46" Guid="78629A15-F3AD-4266-A991-E178AED1A9CE">
-        <File Id="WIX_47" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\js\app.03cceb14.js" ProcessorArchitecture="x86" KeyPath="yes" />
+        <File Id="WIX_47" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\js\app.e957833a.js" ProcessorArchitecture="x86" KeyPath="yes" />
       </Component>
       <Component Id="WIX_48" Directory="WIX_46" Guid="BCB09540-6B1A-48DC-82DA-EF3079BA43BF">
-        <File Id="WIX_48" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\js\app.03cceb14.js.map" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_49" Directory="WIX_46" Guid="3E490BD2-C778-4105-A94C-11CD5801E0D7">
-        <File Id="WIX_49" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\js\app.7a457139.js" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_50" Directory="WIX_46" Guid="4E4925A1-C231-4F2F-B267-D7B579C4CCE4">
-        <File Id="WIX_50" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\js\app.7a457139.js.map" ProcessorArchitecture="x86" KeyPath="yes" />
+        <File Id="WIX_48" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\js\app.e957833a.js.map" ProcessorArchitecture="x86" KeyPath="yes" />
       </Component>
       <Component Id="WIX_51" Directory="WIX_46" Guid="8191CF81-0983-41C8-AED1-3EEB2E564651">
-        <File Id="WIX_51" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\js\chunk-vendors.3c33c64e.js" ProcessorArchitecture="x86" KeyPath="yes" />
+        <File Id="WIX_51" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\js\chunk-vendors.e6932a35.js" ProcessorArchitecture="x86" KeyPath="yes" />
       </Component>
       <Component Id="WIX_52" Directory="WIX_46" Guid="66DB391E-4EE4-4013-8A8F-5A3C8C52DE63">
-        <File Id="WIX_52" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\js\chunk-vendors.3c33c64e.js.map" ProcessorArchitecture="x86" KeyPath="yes" />
+        <File Id="WIX_52" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\js\chunk-vendors.e6932a35.js.map" ProcessorArchitecture="x86" KeyPath="yes" />
       </Component>
       <Component Id="WIX_53" Directory="WIX_9" Guid="3587E3BA-2271-4378-AC3A-DAF4937AAE36">
         <File Id="WIX_53" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\favicon.ico" ProcessorArchitecture="x86" KeyPath="yes" />
