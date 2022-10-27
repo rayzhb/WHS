@@ -1,599 +1,592 @@
 <?xml version="1.0"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Product Id="CF8F07FE-77DB-4E5A-B80F-06FAA6680A21" Name="WHS" Codepage="1252" Language="2052" Version="1.0.1.0" Manufacturer="RAYZHB" UpgradeCode="5AB2874D-0475-44F2-881E-621EAFB3BE22">
-    <?Abbreviation?>
-    <Package Keywords="Installer" Platform="x86" InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
-    <MajorUpgrade DowngradeErrorMessage="WHS 已安装." />
-    <MediaTemplate EmbedCab="yes" />
-    <Binary Id="WHS_CustomAction.CA.dll" src="..\WHS_CustomAction\bin\$(var.Configuration)\WHS_CustomAction.CA.dll" />
-    <CustomAction Id="CA_myCustomAction" BinaryKey="WHS_CustomAction.CA.dll" DllEntry="UpdateFiles" Execute="deferred" Impersonate="no" Return="check" />
-    <InstallExecuteSequence>
-      <Custom Action="CA_myCustomAction" Before="InstallFinalize">Not Installed</Custom>
-    </InstallExecuteSequence>
-    <Feature Id="ProductFeature" Title="WHS_setup" Level="1">
-      <ComponentGroupRef Id="ProductComponents" />
-    </Feature>
-    <Icon Id="WINDOWS.ICO" SourceFile="whs.ico" />
-    <Property Id="ARPPRODUCTICON" Value="WINDOWS.ICO" />
-    <Property Id="WIXUI_INSTALLDIR" Value="WIX_0" />
-    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
-    <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
-    <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="感谢您安装此软件！" />
-    <UI>
-      <UIRef Id="WixUI_InstallDir" />
-      <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchApplication">WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed</Publish>
-    </UI>
-    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="运行 WHS" />
-    <Property Id="WixShellExecTarget" Value="[#WIX_214]" />
-    <CustomAction Id="LaunchApplication" BinaryKey="WixCA" DllEntry="WixShellExec" />
-  </Product>
-  <Fragment>
-    <Directory Id="TARGETDIR" Name="SourceDir">
-      <Directory Id="ProgramFilesFolder">
-        <Directory Id="WIX_3" Name="RAYZHB">
-          <Directory Id="WIX_4" Name="WPF">
-            <Directory Id="WIX_0" Name="WHS">
-              <Directory Id="WIX_5" Name="de" />
-              <Directory Id="WIX_7" Name="en" />
-              <Directory Id="WIX_9" Name="Html">
-                <Directory Id="WIX_10" Name="assets">
-                  <Directory Id="WIX_11" Name="bootstrap">
-                    <Directory Id="WIX_12" Name="css" />
-                    <Directory Id="WIX_21" Name="fonts" />
-                    <Directory Id="WIX_27" Name="js" />
-                  </Directory>
-                </Directory>
-                <Directory Id="WIX_37" Name="css" />
-                <Directory Id="WIX_41" Name="fonts" />
-                <Directory Id="WIX_44" Name="img" />
-                <Directory Id="WIX_46" Name="js" />
-              </Directory>
-              <Directory Id="WIX_57" Name="Plugins">
-                <Directory Id="WIX_58" Name="WHS.DEVICE.AUDIO">
-                  <Directory Id="WIX_59" Name="en" />
-                  <Directory Id="WIX_61" Name="WAV" />
-                  <Directory Id="WIX_105" Name="zh-CN" />
-                </Directory>
-                <Directory Id="WIX_109" Name="WHS.DEVICE.MAPDESIGN">
-                  <Directory Id="WIX_110" Name="en" />
-                  <Directory Id="WIX_113" Name="zh-CN" />
-                </Directory>
-                <Directory Id="WIX_121" Name="WHS.DEVICE.ROBOTNEW">
-                  <Directory Id="WIX_122" Name="en" />
-                  <Directory Id="WIX_124" Name="zh-CN" />
-                </Directory>
-              </Directory>
-              <Directory Id="WIX_132" Name="ref" />
-              <Directory Id="WIX_134" Name="runtimes">
-                <Directory Id="WIX_135" Name="linux">
-                  <Directory Id="WIX_136" Name="lib">
-                    <Directory Id="WIX_137" Name="netstandard2.0" />
-                  </Directory>
-                </Directory>
-                <Directory Id="WIX_139" Name="linux-arm">
-                  <Directory Id="WIX_140" Name="native" />
-                </Directory>
-                <Directory Id="WIX_143" Name="linux-arm64">
-                  <Directory Id="WIX_144" Name="native" />
-                </Directory>
-                <Directory Id="WIX_147" Name="linux-armel">
-                  <Directory Id="WIX_148" Name="native" />
-                </Directory>
-                <Directory Id="WIX_150" Name="linux-x64">
-                  <Directory Id="WIX_151" Name="native" />
-                </Directory>
-                <Directory Id="WIX_154" Name="osx">
-                  <Directory Id="WIX_155" Name="lib">
-                    <Directory Id="WIX_156" Name="netstandard2.0" />
-                  </Directory>
-                  <Directory Id="WIX_158" Name="native" />
-                </Directory>
-                <Directory Id="WIX_160" Name="osx-x64">
-                  <Directory Id="WIX_161" Name="native" />
-                </Directory>
-                <Directory Id="WIX_163" Name="win">
-                  <Directory Id="WIX_164" Name="lib">
-                    <Directory Id="WIX_165" Name="netcoreapp2.0" />
-                    <Directory Id="WIX_167" Name="netstandard2.0" />
-                  </Directory>
-                </Directory>
-                <Directory Id="WIX_169" Name="win-arm">
-                  <Directory Id="WIX_170" Name="native" />
-                </Directory>
-                <Directory Id="WIX_172" Name="win-x64">
-                  <Directory Id="WIX_173" Name="native" />
-                </Directory>
-                <Directory Id="WIX_175" Name="win-x86">
-                  <Directory Id="WIX_176" Name="native" />
-                </Directory>
-              </Directory>
-              <Directory Id="WIX_178" Name="zh-CN" />
-            </Directory>
-          </Directory>
-        </Directory>
-      </Directory>
-      <Directory Id="ProgramMenuFolder">
-        <Directory Id="ApplicationProgramsFolder" Name="WHS" />
-      </Directory>
-      <Directory Id="DesktopFolder" Name="Desktop" />
-    </Directory>
-  </Fragment>
-  <Fragment>
-    <ComponentGroup Id="ProductComponents">
-      
-      
-      <Component Id="WIX_13" Directory="WIX_12" Guid="8AF54021-0D49-45AC-88DD-904C2412A5A2">
-        <File Id="WIX_13" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\css\bootstrap-responsive.css" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_14" Directory="WIX_12" Guid="E5491255-213C-456A-8705-6DB39ABC809E">
-        <File Id="WIX_14" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\css\bootstrap-responsive.min.css" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_15" Directory="WIX_12" Guid="65A6DCB5-590E-495B-A1A9-5D8093CED1CE">
-        <File Id="WIX_15" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\css\bootstrap-theme.css.map" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_16" Directory="WIX_12" Guid="7EACD9BD-A53D-4869-813B-B1480817844B">
-        <File Id="WIX_16" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\css\bootstrap-theme.min.css" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_17" Directory="WIX_12" Guid="00F2C092-9045-4262-9198-D10B37D8C67A">
-        <File Id="WIX_17" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\css\bootstrap.css" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_18" Directory="WIX_12" Guid="C06C93E1-34E4-4745-94C8-DB8B1330D7C3">
-        <File Id="WIX_18" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\css\bootstrap.css.map" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_19" Directory="WIX_12" Guid="1CB5D026-006E-4390-8BD5-D8DE9EC771BA">
-        <File Id="WIX_19" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\css\bootstrap.min.css" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_20" Directory="WIX_12" Guid="521FCAB6-2EAF-4690-90E6-461A28402299">
-        <File Id="WIX_20" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\css\theme.css" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_22" Directory="WIX_21" Guid="57AD520D-0036-4626-BE38-358E9DA03CD8">
-        <File Id="WIX_22" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\fonts\glyphicons-halflings-regular.eot" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_23" Directory="WIX_21" Guid="1382F3E6-7C4A-42CA-BCB9-78D4DB116EBF">
-        <File Id="WIX_23" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\fonts\glyphicons-halflings-regular.svg" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_24" Directory="WIX_21" Guid="F509F987-6167-4DBF-ABC5-7D0DCC9ABC1F">
-        <File Id="WIX_24" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\fonts\glyphicons-halflings-regular.ttf" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_25" Directory="WIX_21" Guid="72DC2179-DBBA-4BEA-B18E-0A28B311A451">
-        <File Id="WIX_25" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\fonts\glyphicons-halflings-regular.woff" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_26" Directory="WIX_21" Guid="8C993E61-FDB6-4C8D-9290-2E552BE0FE6D">
-        <File Id="WIX_26" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\fonts\glyphicons-halflings-regular.woff2" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_28" Directory="WIX_27" Guid="ADCD6849-B3C8-4FC7-A50D-A876F1760D56">
-        <File Id="WIX_28" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\js\bootstrap.js" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_29" Directory="WIX_27" Guid="AD82D762-664A-467B-A558-64284F89DC2E">
-        <File Id="WIX_29" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\js\bootstrap.min.js" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_30" Directory="WIX_27" Guid="8F1CD6F3-39A6-44FD-AF8D-2BBBEFC75B5E">
-        <File Id="WIX_30" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\js\docs.min.js" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_31" Directory="WIX_27" Guid="90629E24-BE30-40C8-9375-5184741280DA">
-        <File Id="WIX_31" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\js\ie-emulation-modes-warning.js" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_32" Directory="WIX_27" Guid="85C5F9AE-C7AF-4A37-97DB-B6FF213E3516">
-        <File Id="WIX_32" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\js\ie10-viewport-bug-workaround.js" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_33" Directory="WIX_27" Guid="5B84C0B4-A159-474B-B927-292F77DF8AEF">
-        <File Id="WIX_33" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\js\jquery-1.12.4.js" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_34" Directory="WIX_27" Guid="7D9E747A-96AD-4B84-8CE6-C0B3A14958DC">
-        <File Id="WIX_34" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\js\jquery-1.12.4.min.js" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_35" Directory="WIX_27" Guid="0EE67BBF-EBF0-40CF-AA80-2F9FCA9971C1">
-        <File Id="WIX_35" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\js\jquery-migrate-1.2.1.js" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_36" Directory="WIX_27" Guid="1493BCDD-B0ED-4EF5-8DEB-F79B1068B748">
-        <File Id="WIX_36" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\js\jquery-migrate-1.2.1.min.js" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_38" Directory="WIX_37" Guid="1D358D80-E20E-4E06-9C69-D6F1B06AC752">
-        <File Id="WIX_38" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\css\app.5bd2a753.css" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_40" Directory="WIX_37" Guid="1933F24A-1ED9-4BB6-92D8-0FCBC7F928C5">
-        <File Id="WIX_40" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\css\chunk-vendors.acee6d16.css" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_42" Directory="WIX_41" Guid="95CCC0EA-76E8-470A-AE14-810C4CC74075">
-        <File Id="WIX_42" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\fonts\element-icons.535877f5.woff" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_43" Directory="WIX_41" Guid="5E89D10B-87E7-4A0D-A06F-0F35A041CCDA">
-        <File Id="WIX_43" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\fonts\element-icons.732389de.ttf" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_45" Directory="WIX_44" Guid="9297DFE3-F4AE-4E25-9D98-1D617474B92E">
-        <File Id="WIX_45" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\img\AGV4.18bac90f.png" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_47" Directory="WIX_46" Guid="78629A15-F3AD-4266-A991-E178AED1A9CE">
-        <File Id="WIX_47" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\js\app.ad820023.js" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_48" Directory="WIX_46" Guid="BCB09540-6B1A-48DC-82DA-EF3079BA43BF">
-        <File Id="WIX_48" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\js\app.ad820023.js.map" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_51" Directory="WIX_46" Guid="8191CF81-0983-41C8-AED1-3EEB2E564651">
-        <File Id="WIX_51" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\js\chunk-vendors.e6932a35.js" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_52" Directory="WIX_46" Guid="66DB391E-4EE4-4013-8A8F-5A3C8C52DE63">
-        <File Id="WIX_52" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\js\chunk-vendors.e6932a35.js.map" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_53" Directory="WIX_9" Guid="3587E3BA-2271-4378-AC3A-DAF4937AAE36">
-        <File Id="WIX_53" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\favicon.ico" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_54" Directory="WIX_9" Guid="30A79C69-DCE5-4A22-AB31-B4DA858F8431">
-        <File Id="WIX_54" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\index.html" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_55" Directory="WIX_9" Guid="22774F8F-F616-4D09-BD90-4F4715CA15AF">
-        <File Id="WIX_55" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\jumbotron-narrow.css" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_56" Directory="WIX_9" Guid="95A66B37-FFB8-4589-94C4-F57279E4DC09">
-        <File Id="WIX_56" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\vue_rcs.html" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_60" Directory="WIX_59" Guid="D521CD38-8C36-423D-B1E1-2876EC15A653">
-        <File Id="WIX_60" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\en\WHS.DEVICE.AUDIO.resources.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_62" Directory="WIX_61" Guid="AD18D11F-A41B-4F61-884A-5B6B3CB76015">
-        <File Id="WIX_62" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\0.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_63" Directory="WIX_61" Guid="E969EA63-F8EC-4C27-B4F1-837A78EF4522">
-        <File Id="WIX_63" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\1.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_64" Directory="WIX_61" Guid="EBFBBA19-22E0-4CBA-81FC-88BA1D668412">
-        <File Id="WIX_64" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\10.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_65" Directory="WIX_61" Guid="DB2E560F-A09F-4282-80C9-158BCAC1DBE4">
-        <File Id="WIX_65" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\11.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_66" Directory="WIX_61" Guid="83286F97-053B-4015-BACA-D5C01FCB1310">
-        <File Id="WIX_66" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\12.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_67" Directory="WIX_61" Guid="CA1872AB-E915-474D-90D3-0AE0234F8275">
-        <File Id="WIX_67" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\13.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_68" Directory="WIX_61" Guid="2A2B12DB-B22E-45AB-BF84-8EE2DA6B07E7">
-        <File Id="WIX_68" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\14.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_69" Directory="WIX_61" Guid="1BD66C46-80BE-4A9F-BC3B-B006DEB8C648">
-        <File Id="WIX_69" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\15.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_70" Directory="WIX_61" Guid="0FB8BD8C-8DCF-49B6-B4D8-9D498E1604F1">
-        <File Id="WIX_70" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\16.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_71" Directory="WIX_61" Guid="E9DDC159-9526-454F-ABC0-ADCC00E10C9D">
-        <File Id="WIX_71" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\17.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_72" Directory="WIX_61" Guid="2ABA872B-6FAF-43E3-8163-E0C3F34BF70F">
-        <File Id="WIX_72" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\18.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_73" Directory="WIX_61" Guid="73929B46-FF30-46B4-A40B-7605D21DB423">
-        <File Id="WIX_73" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\19.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_74" Directory="WIX_61" Guid="4D0300E2-1280-4B20-9D30-F28D706A8D78">
-        <File Id="WIX_74" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\2.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_75" Directory="WIX_61" Guid="08E83247-B288-4838-8CA2-6FC01DFDD20C">
-        <File Id="WIX_75" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\20.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_76" Directory="WIX_61" Guid="FF50D706-EC7D-4E85-ABFD-BA69822F0B10">
-        <File Id="WIX_76" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\21.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_77" Directory="WIX_61" Guid="623B2394-DA5A-413B-8AD7-0BBD3DB218C1">
-        <File Id="WIX_77" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\22.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_78" Directory="WIX_61" Guid="AA9EEA2E-3721-4661-AF4A-4EB82EF2922C">
-        <File Id="WIX_78" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\23.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_79" Directory="WIX_61" Guid="76658FC9-C418-4AC8-8C50-9DA62617D73C">
-        <File Id="WIX_79" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\24.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_80" Directory="WIX_61" Guid="913BE946-12A9-40FF-8484-1CD640782661">
-        <File Id="WIX_80" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\25.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_81" Directory="WIX_61" Guid="279B4B6C-57EB-47E0-8F82-B6154DB3A4AC">
-        <File Id="WIX_81" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\26.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_82" Directory="WIX_61" Guid="34CE9AFD-6042-48DC-BFB7-0B9EB79D4176">
-        <File Id="WIX_82" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\27.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_83" Directory="WIX_61" Guid="9E594D59-E1F6-4CDE-ACBE-AA7B3BB4CA3F">
-        <File Id="WIX_83" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\28.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_84" Directory="WIX_61" Guid="2BD5DE67-2483-49B1-B774-09428C8A8571">
-        <File Id="WIX_84" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\29.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_85" Directory="WIX_61" Guid="63B123B4-CF80-4071-BC36-231BABFEB013">
-        <File Id="WIX_85" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\3.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_86" Directory="WIX_61" Guid="2760510B-4755-4F87-97E9-18449E37A2CA">
-        <File Id="WIX_86" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\30.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_87" Directory="WIX_61" Guid="4CB12444-51C8-4728-8B14-55FE9C98F5AD">
-        <File Id="WIX_87" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\31.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_88" Directory="WIX_61" Guid="D7C52B61-A445-49B4-A5FE-57EA221D09DE">
-        <File Id="WIX_88" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\32.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_89" Directory="WIX_61" Guid="0155E27E-6293-4B00-A71B-F404343DF097">
-        <File Id="WIX_89" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\33.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_90" Directory="WIX_61" Guid="B2C77033-3C56-4A80-A832-4C26EC5AB7A9">
-        <File Id="WIX_90" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\34.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_91" Directory="WIX_61" Guid="1FFB1097-4C79-4F84-B8A9-90AEB87FFDFA">
-        <File Id="WIX_91" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\35.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_92" Directory="WIX_61" Guid="6C959A28-B705-45E4-AB83-524C5B4D1055">
-        <File Id="WIX_92" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\36.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_93" Directory="WIX_61" Guid="7686BABB-2D77-4FC9-B9BA-C2872B3461BD">
-        <File Id="WIX_93" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\4.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_94" Directory="WIX_61" Guid="01FABF14-551D-47BE-AD67-9320E06404EA">
-        <File Id="WIX_94" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\5.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_95" Directory="WIX_61" Guid="222EA0B3-B446-4F34-BB12-B6F100AE5408">
-        <File Id="WIX_95" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\6.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_96" Directory="WIX_61" Guid="18A083A8-7315-46B4-852F-37C1A2CC8ED6">
-        <File Id="WIX_96" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\7.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_97" Directory="WIX_61" Guid="E1E95F0F-4ADF-4528-B77F-8CB34D98544C">
-        <File Id="WIX_97" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\8.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_98" Directory="WIX_61" Guid="2717FC48-462C-4A8A-88F4-18644CC09DF0">
-        <File Id="WIX_98" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\9.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_99" Directory="WIX_61" Guid="6A47A6F8-9AA6-4687-AB95-B5521724499C">
-        <File Id="WIX_99" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\CE.WAV" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_100" Directory="WIX_61" Guid="5BB7F9B0-4E89-4959-BDDA-4C7B061C2684">
-        <File Id="WIX_100" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\error.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_101" Directory="WIX_61" Guid="B40678B9-818E-4321-9A6C-6BA2D32C7796">
-        <File Id="WIX_101" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\Msg.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_102" Directory="WIX_61" Guid="106BDC93-6F6D-46BF-9442-BF8F4C52A981">
-        <File Id="WIX_102" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\ok.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_103" Directory="WIX_61" Guid="323A1AA0-A909-4C92-AA32-7C9ECBF459E3">
-        <File Id="WIX_103" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\ScanErr.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_104" Directory="WIX_61" Guid="61AB1BB0-8923-4585-9AC5-BC1D45A8BE8C">
-        <File Id="WIX_104" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\Succes.wav" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_106" Directory="WIX_105" Guid="C08B8798-B3AC-4782-B8C8-55CE054D619A">
-        <File Id="WIX_106" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\zh-CN\WHS.DEVICE.AUDIO.resources.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_107" Directory="WIX_58" Guid="5CB64342-5879-4784-A3BC-E5CD9301C4D7">
-        <File Id="WIX_107" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\plugin.def" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_108" Directory="WIX_58" Guid="778E1F6E-AD4C-4846-BB65-F5F073BF69F5">
-        <File Id="WIX_108" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WHS.DEVICE.AUDIO.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_112" Directory="WIX_110" Guid="C14445D7-B4E4-4534-8400-3C3F6AF2FBED">
-        <File Id="WIX_112" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.MAPDESIGN\en\WHS.DEVICE.MAPDESIGN.resources.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_115" Directory="WIX_113" Guid="51560537-4A61-4C16-A30A-340B349417DB">
-        <File Id="WIX_115" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.MAPDESIGN\zh-CN\WHS.DEVICE.MAPDESIGN.resources.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_116" Directory="WIX_109" Guid="5C0BCF61-FCA9-430B-A14F-75361562A58D">
-        <File Id="WIX_116" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.MAPDESIGN\plugin.def" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_117" Directory="WIX_109" Guid="BC9D4A44-74D2-40C9-83C9-64A22F1A07E3">
-        <File Id="WIX_117" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.MAPDESIGN\PropertyTools.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_118" Directory="WIX_109" Guid="FF190058-4D34-4A23-A10D-684C25B0981B">
-        <File Id="WIX_118" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.MAPDESIGN\PropertyTools.Wpf.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_119" Directory="WIX_109" Guid="509BA3A5-0A50-4D05-BD39-D796098F850E">
-        <File Id="WIX_119" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.MAPDESIGN\WHS.DEVICE.MAPDESIGN.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_120" Directory="WIX_109" Guid="66BA5338-9946-4853-9ED0-4A98E04260C0">
-        <File Id="WIX_120" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.MAPDESIGN\WHS.DEVICE.MAPDESIGN.pdb" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_123" Directory="WIX_122" Guid="B6069487-F97D-45DF-8640-D703D05DD0E3">
-        <File Id="WIX_123" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.ROBOTNEW\en\WHS.DEVICE.ROBOTNEW.resources.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_125" Directory="WIX_124" Guid="E345D857-87E6-4688-ABE4-3DF2B9FFEC3E">
-        <File Id="WIX_125" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.ROBOTNEW\zh-CN\WHS.DEVICE.ROBOTNEW.resources.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_126" Directory="WIX_121" Guid="0276328B-7565-4036-9551-4AEC9BB7F506">
-        <File Id="WIX_126" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.ROBOTNEW\Advanced.Algorithms.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_127" Directory="WIX_121" Guid="CDF2C5D9-2D9F-437D-B192-69F1E98DCA56">
-        <File Id="WIX_127" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.ROBOTNEW\DijkstraAlgorithm.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_128" Directory="WIX_121" Guid="48905D6F-F6AE-4786-B64E-3EC4F0107A61">
-        <File Id="WIX_128" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.ROBOTNEW\plugin.def" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_129" Directory="WIX_121" Guid="0F475B79-C0A0-46D6-A729-C0C7E0421E81">
-        <File Id="WIX_129" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.ROBOTNEW\WHS.DEVICE.ROBOTNEW.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_130" Directory="WIX_121" Guid="385498E0-EC6A-4FD3-A7AD-A383646ED358">
-        <File Id="WIX_130" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.ROBOTNEW\WHS.DEVICE.ROBOTNEW.pdb" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_131" Directory="WIX_57" Guid="B18038CB-23D2-48B6-B857-B3D643A6C513">
-        <File Id="WIX_131" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\Readme.txt" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_138" Directory="WIX_137" Guid="D4972B7F-7B2E-4F9A-A6F8-10E4168D15CC">
-        <File Id="WIX_138" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\runtimes\linux\lib\netstandard2.0\System.IO.Ports.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_141" Directory="WIX_140" Guid="D2FD2CC9-D4CF-4024-A23B-20920C2F5891">
-        <File Id="WIX_141" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\runtimes\linux-arm\native\libSystem.IO.Ports.Native.so" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_142" Directory="WIX_140" Guid="F0596969-DB4B-41F7-A238-D89387C55C9E">
-        <File Id="WIX_142" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\runtimes\linux-arm\native\libuv.so" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_145" Directory="WIX_144" Guid="CAD7524A-FBD4-45E4-B5BE-751DD4042641">
-        <File Id="WIX_145" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\runtimes\linux-arm64\native\libSystem.IO.Ports.Native.so" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_146" Directory="WIX_144" Guid="1E21F9D0-E21B-4D33-9698-C19C75BF1EA2">
-        <File Id="WIX_146" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\runtimes\linux-arm64\native\libuv.so" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_149" Directory="WIX_148" Guid="04A5EA6F-F341-4945-BA4E-F2B66D418EC5">
-        <File Id="WIX_149" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\runtimes\linux-armel\native\libuv.so" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_152" Directory="WIX_151" Guid="A84C56D9-27AE-4278-A354-FD50CB6863DF">
-        <File Id="WIX_152" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\runtimes\linux-x64\native\libSystem.IO.Ports.Native.so" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_153" Directory="WIX_151" Guid="1271B6E5-F563-4A37-ABA9-DAC2BABF9F7A">
-        <File Id="WIX_153" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\runtimes\linux-x64\native\libuv.so" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_157" Directory="WIX_156" Guid="2DE8B5E1-3F0D-49B6-877D-E4E4B276265A">
-        <File Id="WIX_157" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\runtimes\osx\lib\netstandard2.0\System.IO.Ports.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_159" Directory="WIX_158" Guid="0649B7B0-2D78-4638-9EE4-1D7F7BA89ADD">
-        <File Id="WIX_159" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\runtimes\osx\native\libuv.dylib" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_162" Directory="WIX_161" Guid="ADABC34B-CCF2-4863-A4D1-B869D6184447">
-        <File Id="WIX_162" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\runtimes\osx-x64\native\libSystem.IO.Ports.Native.dylib" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_166" Directory="WIX_165" Guid="6FA2BF0B-1836-468B-ABC1-C205AF060B73">
-        <File Id="WIX_166" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.0\System.Management.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_168" Directory="WIX_167" Guid="0DB13EC8-DE7E-44F6-AD10-2540106E1D9E">
-        <File Id="WIX_168" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\runtimes\win\lib\netstandard2.0\System.IO.Ports.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_171" Directory="WIX_170" Guid="FD16B8A5-5C0B-4FBC-A25E-9A7DE7DE7FD4">
-        <File Id="WIX_171" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\runtimes\win-arm\native\libuv.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_174" Directory="WIX_173" Guid="79F23F08-C441-445C-9CFA-15B421D56576">
-        <File Id="WIX_174" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\runtimes\win-x64\native\libuv.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_177" Directory="WIX_176" Guid="A9DCD092-DD87-46D9-B031-DC2C4D60C063">
-        <File Id="WIX_177" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\runtimes\win-x86\native\libuv.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_179" Directory="WIX_178" Guid="AE4AD047-8F5C-4D3C-92A1-8A29E7A637C7">
-        <File Id="WIX_179" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\zh-CN\WHS.resources.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_181" Directory="WIX_0" Guid="B8B02300-2D51-4B57-858B-76677167431E">
-        <File Id="WIX_181" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Caliburn.Micro.Core.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_182" Directory="WIX_0" Guid="E3DEE14A-BC42-40FE-84A0-160358954011">
-        <File Id="WIX_182" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Caliburn.Micro.Platform.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_183" Directory="WIX_0" Guid="A7B3C21B-B218-4245-81B6-4E63534D3209">
-        <File Id="WIX_183" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\ControlzEx.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_184" Directory="WIX_0" Guid="04128C60-C928-4F90-8779-1499ECF65CBF">
-        <File Id="WIX_184" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\DotNetty.Buffers.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_185" Directory="WIX_0" Guid="88BF1EA1-81EE-40CA-8906-3CB8A78790D1">
-        <File Id="WIX_185" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\DotNetty.Codecs.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_186" Directory="WIX_0" Guid="14868FE0-8423-40A1-AB5C-962BFDC2ED9D">
-        <File Id="WIX_186" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\DotNetty.Codecs.Http.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_187" Directory="WIX_0" Guid="C36A09AF-58FC-4E9A-A8F7-8A4449C9F6B0">
-        <File Id="WIX_187" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\DotNetty.Common.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_188" Directory="WIX_0" Guid="266771A2-FC0D-4B74-B61C-E9579E3588AD">
-        <File Id="WIX_188" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\DotNetty.Handlers.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_189" Directory="WIX_0" Guid="8BA510BD-1CFC-49BD-B211-4B1CEAFA8E50">
-        <File Id="WIX_189" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\DotNetty.Transport.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_190" Directory="WIX_0" Guid="2A6486F6-57E0-4D0F-9527-C64990216A70">
-        <File Id="WIX_190" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\DotNetty.Transport.Libuv.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_191" Directory="WIX_0" Guid="B7722E86-610B-410B-9B72-933612DCCA6F">
-        <File Id="WIX_191" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\MahApps.Metro.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_192" Directory="WIX_0" Guid="2A27762D-CF24-4593-A54A-DF38A0CD1369">
-        <File Id="WIX_192" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\MahApps.Metro.IconPacks.Core.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_193" Directory="WIX_0" Guid="0D81731C-3C81-4D7F-930E-647A7889CE7B">
-        <File Id="WIX_193" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\MahApps.Metro.IconPacks.FontAwesome.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_194" Directory="WIX_0" Guid="E22008B3-45F4-446D-A598-0A225F07B1BA">
-        <File Id="WIX_194" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Microsoft.DotNet.PlatformAbstractions.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_195" Directory="WIX_0" Guid="721EF036-3E46-47FC-A851-8A2EB24176B1">
-        <File Id="WIX_195" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_196" Directory="WIX_0" Guid="E08796B5-F6AE-4C0D-831A-C5B012101449">
-        <File Id="WIX_196" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyInjection.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_197" Directory="WIX_0" Guid="5744548C-3ED9-4E52-9C78-5A0039A06619">
-        <File Id="WIX_197" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyModel.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_198" Directory="WIX_0" Guid="2489298D-F1D2-4DAB-A546-5D6DD901CF9D">
-        <File Id="WIX_198" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Microsoft.Extensions.Logging.Abstractions.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_199" Directory="WIX_0" Guid="E2B08371-2FD4-432E-A758-A3399D38DFC3">
-        <File Id="WIX_199" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Microsoft.Extensions.Logging.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_200" Directory="WIX_0" Guid="156C9CC0-2E39-4476-B414-3FEA726AA6DA">
-        <File Id="WIX_200" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Microsoft.Extensions.Options.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_201" Directory="WIX_0" Guid="A086E461-10C2-4EAA-90FD-E5A45A9A716F">
-        <File Id="WIX_201" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Microsoft.Extensions.Primitives.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_202" Directory="WIX_0" Guid="26CE206F-499A-44BA-963B-6445974809D6">
-        <File Id="WIX_202" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Microsoft.Xaml.Behaviors.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_203" Directory="WIX_0" Guid="163F85D2-A001-47E5-823B-D57BC5CD1365">
-        <File Id="WIX_203" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Newtonsoft.Json.Bson.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_204" Directory="WIX_0" Guid="94E46477-FA48-4B75-B669-F337ED3A386D">
-        <File Id="WIX_204" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Newtonsoft.Json.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_205" Directory="WIX_0" Guid="34EA4EC1-B88B-4DB5-AF34-3A3B0823E6AA">
-        <File Id="WIX_205" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\NLog.config" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_206" Directory="WIX_0" Guid="AD7DD3D2-29C0-46C4-A34F-17D4CC9F1BDA">
-        <File Id="WIX_206" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\NLog.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_207" Directory="WIX_0" Guid="C3697E7D-F106-4D48-B700-EDD311025E16">
-        <File Id="WIX_207" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Polly.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_208" Directory="WIX_0" Guid="0E231F1A-C430-4F5C-A275-BDCFBB995070">
-        <File Id="WIX_208" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\System.IO.Ports.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_209" Directory="WIX_0" Guid="A7C78B19-9A75-47AA-8B93-CB7BAE9CC4A2">
-        <File Id="WIX_209" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\System.Management.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_210" Directory="WIX_0" Guid="D762C432-90CA-41DD-BAEE-78D532E49A93">
-        <File Id="WIX_210" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\System.Net.Http.Formatting.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_211" Directory="WIX_0" Guid="86A22FC0-092F-430F-99D3-36F2EB940B40">
-        <File Id="WIX_211" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\WHS.deps.json" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_212" Directory="WIX_0" Guid="B8DFC98B-D0E9-4E94-A250-C19591B0570D">
-        <File Id="WIX_212" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\WHS.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_213" Directory="WIX_0" Guid="640B093C-AC85-4FC1-B0BC-0E5B22A8898C">
-        <File Id="WIX_213" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\WHS.dll.config" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_214" Directory="WIX_0" Guid="06A5EE90-B1F0-4DF0-84C8-7DF3FB9C2711">
-        <File Id="WIX_214" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\WHS.exe" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_215" Directory="WIX_0" Guid="144A8E3D-8352-4B28-BBB0-554DC4BEA919">
-        <File Id="WIX_215" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\WHS.Infrastructure.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_216" Directory="WIX_0" Guid="CA41434A-1846-4A3C-916B-3AA0429F6F69">
-        <File Id="WIX_216" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\WHS.Infrastructure.pdb" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_217" Directory="WIX_0" Guid="CC1C0746-1301-4E1D-A68B-439C711366F0">
-        <File Id="WIX_217" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\WHS.pdb" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_219" Directory="WIX_0" Guid="6448D66A-2CC7-4770-BC45-F95CBEC7C25C">
-        <File Id="WIX_219" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\WHS.runtimeconfig.json" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_220" Directory="WIX_0" Guid="03229E0D-A38A-4FC1-90E9-6242ED8C3DE3">
-        <File Id="WIX_220" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\WPFLocalizeExtension.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_221" Directory="WIX_0" Guid="5D92FC6A-F2C9-425F-AACA-872732326F3C">
-        <File Id="WIX_221" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\WPFLocalizeExtension.pdb" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="WIX_222" Directory="WIX_0" Guid="F667FA49-C599-49E1-BAAF-B9721E32C1BE">
-        <File Id="WIX_222" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\XAMLMarkupExtensions.dll" ProcessorArchitecture="x86" KeyPath="yes" />
-      </Component>
-      <Component Id="ApplicationShortcut" Directory="ApplicationProgramsFolder" Guid="{9D92873B-3CA4-45A2-85E4-9311888CC513}">
-        <Shortcut Id="ApplicationStartMenuShortcut" Name="WHS" Description="WHS(WINDOWS系统硬件开发平台)" Target="[#WIX_214]" WorkingDirectory="APPLICATIONROOTDIRECTORY" />
-        <Shortcut Id="UninstallProduct" Name="卸载 WHS" Target="[SystemFolder]msiexec.exe" Arguments="/x [ProductCode]" Description="WHS" />
-        <Shortcut Id="DesktopShortcut" Directory="DesktopFolder" Name="WHS" Target="[#WIX_214]" WorkingDirectory="APPLICATIONROOTDIRECTORY" />
-        <RemoveFolder Id="CleanUpShortCut" Directory="ApplicationProgramsFolder" On="uninstall" />
-        <RegistryValue Root="HKCU" Key="Software\RAYZHB\WHS" Name="installed" Type="integer" Value="1" KeyPath="yes" />
-      </Component>
-    </ComponentGroup>
-  </Fragment>
+	<Product Id="CF8F07FE-77DB-4E5A-B80F-06FAA6680A21" Name="WHS" Codepage="1252" Language="2052" Version="1.0.1.0" Manufacturer="RAYZHB" UpgradeCode="5AB2874D-0475-44F2-881E-621EAFB3BE22">
+		<?Abbreviation ?>
+		<Package Keywords="Installer" Platform="x86" InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+		<MajorUpgrade DowngradeErrorMessage="A newer version of WHS is already installed." />
+		<MediaTemplate EmbedCab="yes" />
+		<Feature Id="ProductFeature" Title="WHS_setup" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+		</Feature>
+		<Icon Id="WINDOWS.ICO" SourceFile="whs.ico" />
+		<Property Id="ARPPRODUCTICON" Value="WINDOWS.ICO" />
+		<Property Id="WIXUI_INSTALLDIR" Value="WIX_0" />
+		<Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
+		<UI>
+			<UIRef Id="WixUI_InstallDir" />
+			<Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchApplication">WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed</Publish>
+		</UI>
+		<Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="运行 WHS" />
+		<Property Id="WixShellExecTarget" Value="[#WIX_1]" />
+		<CustomAction Id="LaunchApplication" BinaryKey="WixCA" DllEntry="WixShellExec" />
+	</Product>
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="WIX_3" Name="RAYZHB">
+					<Directory Id="WIX_4" Name="WPF">
+						<Directory Id="WIX_0" Name="WHS">
+							<Directory Id="WIX_5" Name="de" />
+							<Directory Id="WIX_6" Name="en" />
+							<Directory Id="WIX_7" Name="Html">
+								<Directory Id="WIX_8" Name="assets">
+									<Directory Id="WIX_9" Name="bootstrap">
+										<Directory Id="WIX_10" Name="css" />
+										<Directory Id="WIX_19" Name="fonts" />
+										<Directory Id="WIX_25" Name="js" />
+									</Directory>
+								</Directory>
+								<Directory Id="WIX_35" Name="vue_rcs">
+									<Directory Id="WIX_36" Name="css" />
+									<Directory Id="WIX_39" Name="fonts" />
+									<Directory Id="WIX_42" Name="img" />
+									<Directory Id="WIX_44" Name="js" />
+								</Directory>
+							</Directory>
+							<Directory Id="WIX_53" Name="Plugins">
+								<Directory Id="WIX_54" Name="WHS.DEVICE.AUDIO">
+									<Directory Id="WIX_55" Name="en" />
+									<Directory Id="WIX_57" Name="WAV" />
+									<Directory Id="WIX_101" Name="zh-CN" />
+								</Directory>
+								<Directory Id="WIX_105" Name="WHS.DEVICE.MAPDESIGN">
+									<Directory Id="WIX_106" Name="en" />
+									<Directory Id="WIX_108" Name="zh-CN" />
+								</Directory>
+								<Directory Id="WIX_115" Name="WHS.DEVICE.ROBOTNEW">
+									<Directory Id="WIX_116" Name="en" />
+									<Directory Id="WIX_118" Name="zh-CN" />
+								</Directory>
+							</Directory>
+							<Directory Id="WIX_126" Name="ref" />
+							<Directory Id="WIX_127" Name="runtimes">
+								<Directory Id="WIX_128" Name="linux">
+									<Directory Id="WIX_129" Name="lib">
+										<Directory Id="WIX_130" Name="netstandard2.0" />
+									</Directory>
+								</Directory>
+								<Directory Id="WIX_132" Name="linux-arm">
+									<Directory Id="WIX_133" Name="native" />
+								</Directory>
+								<Directory Id="WIX_136" Name="linux-arm64">
+									<Directory Id="WIX_137" Name="native" />
+								</Directory>
+								<Directory Id="WIX_140" Name="linux-armel">
+									<Directory Id="WIX_141" Name="native" />
+								</Directory>
+								<Directory Id="WIX_143" Name="linux-x64">
+									<Directory Id="WIX_144" Name="native" />
+								</Directory>
+								<Directory Id="WIX_147" Name="osx">
+									<Directory Id="WIX_148" Name="lib">
+										<Directory Id="WIX_149" Name="netstandard2.0" />
+									</Directory>
+									<Directory Id="WIX_151" Name="native" />
+								</Directory>
+								<Directory Id="WIX_153" Name="osx-x64">
+									<Directory Id="WIX_154" Name="native" />
+								</Directory>
+								<Directory Id="WIX_156" Name="win">
+									<Directory Id="WIX_157" Name="lib">
+										<Directory Id="WIX_158" Name="netcoreapp2.0" />
+										<Directory Id="WIX_160" Name="netstandard2.0" />
+									</Directory>
+								</Directory>
+								<Directory Id="WIX_162" Name="win-arm">
+									<Directory Id="WIX_163" Name="native" />
+								</Directory>
+								<Directory Id="WIX_165" Name="win-x64">
+									<Directory Id="WIX_166" Name="native" />
+								</Directory>
+								<Directory Id="WIX_168" Name="win-x86">
+									<Directory Id="WIX_169" Name="native" />
+								</Directory>
+							</Directory>
+							<Directory Id="WIX_171" Name="zh-CN" />
+						</Directory>
+					</Directory>
+				</Directory>
+			</Directory>
+			<Directory Id="ProgramMenuFolder">
+				<Directory Id="ApplicationProgramsFolder" Name="WHS" />
+			</Directory>
+			<Directory Id="DesktopFolder" Name="Desktop" />
+		</Directory>
+	</Fragment>
+	<Fragment>
+		<ComponentGroup Id="ProductComponents">
+			<Component Id="WIX_11" Directory="WIX_10" Guid="09018947-B5C0-49FD-AF1C-82F54702B96E">
+				<File Id="WIX_11" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\css\bootstrap-responsive.css" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_12" Directory="WIX_10" Guid="2FA5010D-CB72-4A59-9653-379F41E3CEBC">
+				<File Id="WIX_12" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\css\bootstrap-responsive.min.css" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_13" Directory="WIX_10" Guid="5EC7D9A1-D2ED-4A5F-802A-4BF4F2091317">
+				<File Id="WIX_13" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\css\bootstrap-theme.css.map" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_14" Directory="WIX_10" Guid="F8CFF806-A90A-424E-9228-A09599E77E6C">
+				<File Id="WIX_14" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\css\bootstrap-theme.min.css" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_15" Directory="WIX_10" Guid="3AA9B11C-2388-4629-8ACA-1BAA956F33E2">
+				<File Id="WIX_15" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\css\bootstrap.css" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_16" Directory="WIX_10" Guid="89D2CA7B-499B-4C47-89A0-F656B15BF34B">
+				<File Id="WIX_16" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\css\bootstrap.css.map" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_17" Directory="WIX_10" Guid="D6CFCA30-7778-4732-8A7C-BD6210170F47">
+				<File Id="WIX_17" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\css\bootstrap.min.css" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_18" Directory="WIX_10" Guid="5807A7AC-B88A-488E-BF8A-59E653C8F4B4">
+				<File Id="WIX_18" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\css\theme.css" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_20" Directory="WIX_19" Guid="07ABAE55-D732-4EBA-AFCD-4FAFAB1831D9">
+				<File Id="WIX_20" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\fonts\glyphicons-halflings-regular.eot" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_21" Directory="WIX_19" Guid="9C115AB7-85A0-4CA4-AF2B-CCF87EF7E86E">
+				<File Id="WIX_21" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\fonts\glyphicons-halflings-regular.svg" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_22" Directory="WIX_19" Guid="E0B91032-6550-417D-B2DD-B09F6C3495EC">
+				<File Id="WIX_22" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\fonts\glyphicons-halflings-regular.ttf" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_23" Directory="WIX_19" Guid="111A5D91-6369-446C-9CDF-FF714A85E083">
+				<File Id="WIX_23" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\fonts\glyphicons-halflings-regular.woff" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_24" Directory="WIX_19" Guid="15CE78C4-03A3-4A3C-A013-A5E4005808B3">
+				<File Id="WIX_24" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\fonts\glyphicons-halflings-regular.woff2" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_26" Directory="WIX_25" Guid="82964F8F-45BF-4BC4-9C99-15300A73AC15">
+				<File Id="WIX_26" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\js\bootstrap.js" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_27" Directory="WIX_25" Guid="EF679BA7-6352-4433-93D5-191B34F0F3A0">
+				<File Id="WIX_27" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\js\bootstrap.min.js" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_28" Directory="WIX_25" Guid="AF050AC4-7F4B-442F-8A52-285C142E908E">
+				<File Id="WIX_28" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\js\docs.min.js" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_29" Directory="WIX_25" Guid="7B8CD378-911E-45DF-B412-04E7D3099F6A">
+				<File Id="WIX_29" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\js\ie-emulation-modes-warning.js" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_30" Directory="WIX_25" Guid="CEBAD6F8-FC47-4F62-B224-D32F43BE1CDF">
+				<File Id="WIX_30" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\js\ie10-viewport-bug-workaround.js" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_31" Directory="WIX_25" Guid="7A329FE3-06D3-4E41-9DDD-924DD9402BCF">
+				<File Id="WIX_31" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\js\jquery-1.12.4.js" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_32" Directory="WIX_25" Guid="B86C5C3E-355C-4C85-9349-096A23AB348D">
+				<File Id="WIX_32" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\js\jquery-1.12.4.min.js" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_33" Directory="WIX_25" Guid="97CFABFE-BFAD-4B48-9DB1-98A7BFB8A260">
+				<File Id="WIX_33" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\js\jquery-migrate-1.2.1.js" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_34" Directory="WIX_25" Guid="D85D85CB-7705-4E68-A5AA-260FFD21D892">
+				<File Id="WIX_34" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\assets\bootstrap\js\jquery-migrate-1.2.1.min.js" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_37" Directory="WIX_36" Guid="6413BCB2-540E-4D80-B88D-5EDFE627A15A">
+				<File Id="WIX_37" Source="E:\ray-projects\仓储硬件服务\WHS-NET6-GIT\WHS\Html\vue_rcs\css\app.5bd2a753.css" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_38" Directory="WIX_36" Guid="D5B40196-0BD9-4DE4-ADAB-4332D2B4158A">
+				<File Id="WIX_38" Source="E:\ray-projects\仓储硬件服务\WHS-NET6-GIT\WHS\Html\vue_rcs\css\chunk-vendors.acee6d16.css" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_40" Directory="WIX_39" Guid="F5653EE4-6352-4AAE-AF40-7A093036AC2E">
+				<File Id="WIX_40" Source="E:\ray-projects\仓储硬件服务\WHS-NET6-GIT\WHS\Html\vue_rcs\fonts\element-icons.535877f5.woff" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_41" Directory="WIX_39" Guid="CDC22ABC-DD05-4711-8A12-8C36AD10651F">
+				<File Id="WIX_41" Source="E:\ray-projects\仓储硬件服务\WHS-NET6-GIT\WHS\Html\vue_rcs\fonts\element-icons.732389de.ttf" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_43" Directory="WIX_42" Guid="45FCCDF2-5C3A-470E-ADAF-D1C0B1CB740C">
+				<File Id="WIX_43" Source="E:\ray-projects\仓储硬件服务\WHS-NET6-GIT\WHS\Html\vue_rcs\img\AGV4.18bac90f.png" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_45" Directory="WIX_44" Guid="C4863F4D-5A35-413B-9719-95B7F58F714F">
+				<File Id="WIX_45" Source="E:\ray-projects\仓储硬件服务\WHS-NET6-GIT\WHS\Html\vue_rcs\js\app.ad820023.js" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_46" Directory="WIX_44" Guid="BE4E549B-5964-4F6A-971B-8EB732B1A246">
+				<File Id="WIX_46" Source="E:\ray-projects\仓储硬件服务\WHS-NET6-GIT\WHS\Html\vue_rcs\js\app.ad820023.js.map" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_47" Directory="WIX_44" Guid="D17845DA-A680-4CF0-8163-C0BD16D9D743">
+				<File Id="WIX_47" Source="E:\ray-projects\仓储硬件服务\WHS-NET6-GIT\WHS\Html\vue_rcs\js\chunk-vendors.e6932a35.js" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_48" Directory="WIX_44" Guid="F06CC468-7204-4237-A2A3-CC98CD0CB761">
+				<File Id="WIX_48" Source="E:\ray-projects\仓储硬件服务\WHS-NET6-GIT\WHS\Html\vue_rcs\js\chunk-vendors.e6932a35.js.map" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_49" Directory="WIX_35" Guid="942D84C7-E2FB-4D7E-A964-26B1154C6230">
+				<File Id="WIX_49" Source="E:\ray-projects\仓储硬件服务\WHS-NET6-GIT\WHS\Html\vue_rcs\favicon.ico" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_50" Directory="WIX_35" Guid="B35FDC47-05E6-4AFD-98B3-9FB34C05BF32">
+				<File Id="WIX_50" Source="E:\ray-projects\仓储硬件服务\WHS-NET6-GIT\WHS\Html\vue_rcs\vue_rcs.html" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_51" Directory="WIX_7" Guid="75892279-8D8F-4978-A10C-94B7592E3F37">
+				<File Id="WIX_51" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\index.html" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_52" Directory="WIX_7" Guid="8F3C135D-5060-4C1E-B513-EBBF929194A5">
+				<File Id="WIX_52" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Html\jumbotron-narrow.css" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_56" Directory="WIX_55" Guid="C20BFA89-2E91-4FBC-A053-9DF59FB85392">
+				<File Id="WIX_56" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\en\WHS.DEVICE.AUDIO.resources.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_58" Directory="WIX_57" Guid="563428F1-E939-4C3A-B903-1E52D2BF8AB3">
+				<File Id="WIX_58" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\0.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_59" Directory="WIX_57" Guid="DF636EC3-958E-421B-8EF8-A3BC2F330B27">
+				<File Id="WIX_59" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\1.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_60" Directory="WIX_57" Guid="74BD0A6C-A417-41D6-B6B3-82186DDC7D03">
+				<File Id="WIX_60" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\10.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_61" Directory="WIX_57" Guid="FA4DE432-612F-4D3C-8CAE-069EE808B642">
+				<File Id="WIX_61" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\11.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_62" Directory="WIX_57" Guid="71CFBCA7-8E1E-4CDE-BEB1-74197288491B">
+				<File Id="WIX_62" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\12.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_63" Directory="WIX_57" Guid="83D2FEA8-3603-44E4-A570-A923D4C750DC">
+				<File Id="WIX_63" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\13.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_64" Directory="WIX_57" Guid="6D8FF9AB-5BBE-4E26-B105-A64B879DC84C">
+				<File Id="WIX_64" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\14.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_65" Directory="WIX_57" Guid="2FBE50C2-17CE-44B9-AA95-E984B3D02FB7">
+				<File Id="WIX_65" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\15.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_66" Directory="WIX_57" Guid="4E1E71BE-4450-44E6-8AD5-5C50A6BE40C9">
+				<File Id="WIX_66" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\16.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_67" Directory="WIX_57" Guid="50C7A693-BF93-4473-8A1E-1299137A9319">
+				<File Id="WIX_67" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\17.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_68" Directory="WIX_57" Guid="7CD5AE92-3782-492F-BE91-AC467F020005">
+				<File Id="WIX_68" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\18.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_69" Directory="WIX_57" Guid="461C433F-EDF8-46B6-977A-8A937BE5C745">
+				<File Id="WIX_69" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\19.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_70" Directory="WIX_57" Guid="7A7F24AF-163C-4EC3-BB37-879B57E8CE73">
+				<File Id="WIX_70" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\2.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_71" Directory="WIX_57" Guid="F902CF36-2E01-4442-AB12-14B3EE0EACF5">
+				<File Id="WIX_71" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\20.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_72" Directory="WIX_57" Guid="7E4415DA-ECAA-4456-89A4-BAEFE911D95C">
+				<File Id="WIX_72" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\21.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_73" Directory="WIX_57" Guid="E0B33EA6-3587-4920-9BEC-CFD91DA7943A">
+				<File Id="WIX_73" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\22.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_74" Directory="WIX_57" Guid="BEB613DC-DE4A-44FB-9ECD-D9DFE0F1A6EC">
+				<File Id="WIX_74" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\23.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_75" Directory="WIX_57" Guid="E5A1DE07-D43F-4062-9990-5B6EE07AB013">
+				<File Id="WIX_75" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\24.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_76" Directory="WIX_57" Guid="07B8F321-93DC-40D4-A04A-646E8E918E8B">
+				<File Id="WIX_76" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\25.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_77" Directory="WIX_57" Guid="BE211454-7F15-4F2C-B4AA-E625DCAC28C7">
+				<File Id="WIX_77" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\26.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_78" Directory="WIX_57" Guid="AE987295-4467-418B-8F7C-96C3DE2D6011">
+				<File Id="WIX_78" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\27.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_79" Directory="WIX_57" Guid="62E063BC-F3EA-4C78-A920-CEDB28CC4E30">
+				<File Id="WIX_79" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\28.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_80" Directory="WIX_57" Guid="4903C9BC-D0F5-483D-A6F3-0B416C62C8F7">
+				<File Id="WIX_80" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\29.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_81" Directory="WIX_57" Guid="4125955A-0424-494D-8F39-F0325F4FBC0F">
+				<File Id="WIX_81" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\3.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_82" Directory="WIX_57" Guid="EA190E2C-AE41-4F3F-97E7-3C6C13335822">
+				<File Id="WIX_82" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\30.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_83" Directory="WIX_57" Guid="2534673C-7F0C-4EFE-913B-098A2858D1D6">
+				<File Id="WIX_83" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\31.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_84" Directory="WIX_57" Guid="A98FE9F6-B30D-4726-80A0-4D10AA91ADCB">
+				<File Id="WIX_84" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\32.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_85" Directory="WIX_57" Guid="1BE7BE5B-F847-4701-BA98-3A094E95B8C5">
+				<File Id="WIX_85" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\33.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_86" Directory="WIX_57" Guid="9170FEE5-15ED-4B25-82EE-567344163BE6">
+				<File Id="WIX_86" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\34.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_87" Directory="WIX_57" Guid="8739A83F-34A5-45F8-AEFF-12B948BAE174">
+				<File Id="WIX_87" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\35.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_88" Directory="WIX_57" Guid="9238CEFA-FAC7-4300-9614-974CF5587B1A">
+				<File Id="WIX_88" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\36.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_89" Directory="WIX_57" Guid="BAA82800-282C-46FA-98E9-BC64F27ECAC8">
+				<File Id="WIX_89" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\4.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_90" Directory="WIX_57" Guid="375A3694-7FC7-45F2-A3F4-AFE1ED8EC8D8">
+				<File Id="WIX_90" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\5.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_91" Directory="WIX_57" Guid="5BDB4CDE-F7EA-417A-AC1E-D4DB96E5CA3D">
+				<File Id="WIX_91" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\6.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_92" Directory="WIX_57" Guid="A9C341E4-A61D-45CE-9EEC-FDD66F150B31">
+				<File Id="WIX_92" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\7.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_93" Directory="WIX_57" Guid="A342067C-427B-40BC-92CE-0B7A6E3AC08B">
+				<File Id="WIX_93" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\8.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_94" Directory="WIX_57" Guid="C4C37D31-D152-4675-B1BC-90B48D260AFD">
+				<File Id="WIX_94" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\9.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_95" Directory="WIX_57" Guid="2FE499BE-5DD7-4EF0-A46B-6BEA58A84DA0">
+				<File Id="WIX_95" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\CE.WAV" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_96" Directory="WIX_57" Guid="3A28BE46-D61C-486D-8B5A-A1756CFA11EA">
+				<File Id="WIX_96" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\error.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_97" Directory="WIX_57" Guid="33A8BD7D-D9C0-403B-B0B1-080153085D22">
+				<File Id="WIX_97" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\Msg.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_98" Directory="WIX_57" Guid="0CE6A3A7-1218-4E8E-82DD-01CE49845BA5">
+				<File Id="WIX_98" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\ok.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_99" Directory="WIX_57" Guid="B2D2DA8C-1AC3-4F5A-BB5E-379D7423A91B">
+				<File Id="WIX_99" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\ScanErr.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_100" Directory="WIX_57" Guid="E4023A8F-922D-4B04-B77E-C72BE9E722E9">
+				<File Id="WIX_100" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WAV\Succes.wav" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_102" Directory="WIX_101" Guid="0CB26F16-D07B-4E2F-86B1-7E8E42983B3A">
+				<File Id="WIX_102" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\zh-CN\WHS.DEVICE.AUDIO.resources.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_103" Directory="WIX_54" Guid="1B8C5F5E-590B-471A-9C4B-1D0F29662553">
+				<File Id="WIX_103" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\plugin.def" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_104" Directory="WIX_54" Guid="40C036BA-DE7D-44CE-9BC6-5B37ACAD3606">
+				<File Id="WIX_104" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.AUDIO\WHS.DEVICE.AUDIO.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_107" Directory="WIX_106" Guid="739C57D8-A97C-468C-BC92-45F7CE8ED38A">
+				<File Id="WIX_107" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.MAPDESIGN\en\WHS.DEVICE.MAPDESIGN.resources.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_109" Directory="WIX_108" Guid="17A5E66C-0407-4558-AA5C-B79A0DD592DC">
+				<File Id="WIX_109" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.MAPDESIGN\zh-CN\WHS.DEVICE.MAPDESIGN.resources.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_110" Directory="WIX_105" Guid="DF9F59B8-F940-43A2-8A51-2A704FCADC29">
+				<File Id="WIX_110" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.MAPDESIGN\plugin.def" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_111" Directory="WIX_105" Guid="12ECD046-9214-45C8-8D50-16DFFEB1A0BD">
+				<File Id="WIX_111" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.MAPDESIGN\PropertyTools.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_112" Directory="WIX_105" Guid="60F5A7CF-3A81-45CA-8C32-0B2E24D6CCBB">
+				<File Id="WIX_112" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.MAPDESIGN\PropertyTools.Wpf.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_113" Directory="WIX_105" Guid="F3A13742-452D-4271-937F-094F585D7B96">
+				<File Id="WIX_113" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.MAPDESIGN\WHS.DEVICE.MAPDESIGN.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_114" Directory="WIX_105" Guid="9EC217B2-521E-4524-AB62-4B931B8AE7D1">
+				<File Id="WIX_114" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.MAPDESIGN\WHS.DEVICE.MAPDESIGN.pdb" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_117" Directory="WIX_116" Guid="D6B97822-C6F1-4CC1-8A63-DCEEFA36108A">
+				<File Id="WIX_117" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.ROBOTNEW\en\WHS.DEVICE.ROBOTNEW.resources.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_119" Directory="WIX_118" Guid="D7FD17AF-16D3-48D2-BE31-5B2A028D6540">
+				<File Id="WIX_119" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.ROBOTNEW\zh-CN\WHS.DEVICE.ROBOTNEW.resources.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_120" Directory="WIX_115" Guid="75D7BD91-62D3-4AA9-B0D6-E6D877C0DAD4">
+				<File Id="WIX_120" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.ROBOTNEW\Advanced.Algorithms.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_121" Directory="WIX_115" Guid="0939EF85-0134-460D-8E5B-B1B8B331F155">
+				<File Id="WIX_121" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.ROBOTNEW\DijkstraAlgorithm.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_122" Directory="WIX_115" Guid="924FAD1E-FD4C-41D6-8DD5-734B9908EFBB">
+				<File Id="WIX_122" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.ROBOTNEW\plugin.def" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_123" Directory="WIX_115" Guid="657B5AFA-F2AA-4C79-B47F-6682CC1583DF">
+				<File Id="WIX_123" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.ROBOTNEW\WHS.DEVICE.ROBOTNEW.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_124" Directory="WIX_115" Guid="C52D5C6B-D771-4765-A3C5-571DEE1BC665">
+				<File Id="WIX_124" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\WHS.DEVICE.ROBOTNEW\WHS.DEVICE.ROBOTNEW.pdb" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_125" Directory="WIX_53" Guid="BF21B636-314B-4C83-9DF5-06233A4796C7">
+				<File Id="WIX_125" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Plugins\Readme.txt" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_131" Directory="WIX_130" Guid="05A70FBC-F9E9-4B41-9EB5-F68D5F639838">
+				<File Id="WIX_131" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\runtimes\linux\lib\netstandard2.0\System.IO.Ports.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_134" Directory="WIX_133" Guid="2DE7CE32-3319-4477-B64F-7409FEEC2DDD">
+				<File Id="WIX_134" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\runtimes\linux-arm\native\libSystem.IO.Ports.Native.so" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_135" Directory="WIX_133" Guid="D2A39124-4CF8-4390-908E-D7D2405446BD">
+				<File Id="WIX_135" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\runtimes\linux-arm\native\libuv.so" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_138" Directory="WIX_137" Guid="8C63B67C-5D0C-4F97-A011-796F4AA402E6">
+				<File Id="WIX_138" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\runtimes\linux-arm64\native\libSystem.IO.Ports.Native.so" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_139" Directory="WIX_137" Guid="1760F8B2-A61F-4C05-A4AF-84CEC8C9BDAD">
+				<File Id="WIX_139" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\runtimes\linux-arm64\native\libuv.so" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_142" Directory="WIX_141" Guid="3092CB4A-818A-432F-9190-D245A156E6F6">
+				<File Id="WIX_142" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\runtimes\linux-armel\native\libuv.so" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_145" Directory="WIX_144" Guid="E3BD2292-AF60-463F-9310-0AE9687E45A7">
+				<File Id="WIX_145" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\runtimes\linux-x64\native\libSystem.IO.Ports.Native.so" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_146" Directory="WIX_144" Guid="1AC73685-5D02-4EAD-8966-AA3896EEC87E">
+				<File Id="WIX_146" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\runtimes\linux-x64\native\libuv.so" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_150" Directory="WIX_149" Guid="01AF26C4-AA40-4BE1-A4B2-EE43F255F0BD">
+				<File Id="WIX_150" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\runtimes\osx\lib\netstandard2.0\System.IO.Ports.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_152" Directory="WIX_151" Guid="FB4A2C52-A3FD-408D-8444-2A31DE45BC46">
+				<File Id="WIX_152" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\runtimes\osx\native\libuv.dylib" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_155" Directory="WIX_154" Guid="9996119E-FF09-4EDD-A822-A38FE9091DA7">
+				<File Id="WIX_155" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\runtimes\osx-x64\native\libSystem.IO.Ports.Native.dylib" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_159" Directory="WIX_158" Guid="B22BEAF7-1BEF-4E71-AE4D-BAE3AB36A26A">
+				<File Id="WIX_159" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.0\System.Management.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_161" Directory="WIX_160" Guid="35868920-A025-436F-97C0-1C05C0C9C8E1">
+				<File Id="WIX_161" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\runtimes\win\lib\netstandard2.0\System.IO.Ports.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_164" Directory="WIX_163" Guid="6DAFF53C-D18E-464E-A94E-09BF137F720E">
+				<File Id="WIX_164" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\runtimes\win-arm\native\libuv.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_167" Directory="WIX_166" Guid="DAFA047A-0B89-461A-B075-EBCBDC694A98">
+				<File Id="WIX_167" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\runtimes\win-x64\native\libuv.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_170" Directory="WIX_169" Guid="9A8533AE-60AB-43C0-AD4F-D879677F9D3E">
+				<File Id="WIX_170" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\runtimes\win-x86\native\libuv.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_172" Directory="WIX_171" Guid="3B0B31BA-9FDB-4D99-A7D8-66371418A1A4">
+				<File Id="WIX_172" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\zh-CN\WHS.resources.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_173" Directory="WIX_0" Guid="79A9B125-D67B-43A8-8EC0-F6B844C565C4">
+				<File Id="WIX_173" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Caliburn.Micro.Core.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_174" Directory="WIX_0" Guid="65BFEBD6-B989-4D3C-B8D4-44299AB78BEC">
+				<File Id="WIX_174" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Caliburn.Micro.Platform.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_175" Directory="WIX_0" Guid="508ED482-833E-4F20-98B4-C662A948877D">
+				<File Id="WIX_175" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\ControlzEx.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_176" Directory="WIX_0" Guid="9AEE90B1-15FD-4EE7-B3E3-A85BD96CE8D1">
+				<File Id="WIX_176" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\DotNetty.Buffers.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_177" Directory="WIX_0" Guid="A35551C6-5AF4-4E6D-9FB5-9CC5A4A90FAD">
+				<File Id="WIX_177" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\DotNetty.Codecs.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_178" Directory="WIX_0" Guid="5611F390-4C75-4F7E-AA48-16F8434767EA">
+				<File Id="WIX_178" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\DotNetty.Codecs.Http.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_179" Directory="WIX_0" Guid="17BBDB49-ED21-43A7-A74B-8FC9EC690885">
+				<File Id="WIX_179" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\DotNetty.Common.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_180" Directory="WIX_0" Guid="8315555D-0711-4341-B7FB-9133A2661FF0">
+				<File Id="WIX_180" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\DotNetty.Handlers.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_181" Directory="WIX_0" Guid="3F879D82-1936-4CA7-A41E-BE6E8497EB4D">
+				<File Id="WIX_181" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\DotNetty.Transport.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_182" Directory="WIX_0" Guid="99AB30C9-25EC-4EDF-81C1-F8E94D044787">
+				<File Id="WIX_182" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\DotNetty.Transport.Libuv.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_183" Directory="WIX_0" Guid="C1E518E4-39F2-4415-9CB8-1D2155F09CE6">
+				<File Id="WIX_183" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\MahApps.Metro.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_184" Directory="WIX_0" Guid="D7E3F081-686A-432A-B14E-4669CA4D83ED">
+				<File Id="WIX_184" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\MahApps.Metro.IconPacks.Core.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_185" Directory="WIX_0" Guid="37EB9658-D632-410F-8678-C8A8FF9F3122">
+				<File Id="WIX_185" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\MahApps.Metro.IconPacks.FontAwesome.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_186" Directory="WIX_0" Guid="79991025-6E46-4194-ADDA-0CC77F110BAC">
+				<File Id="WIX_186" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Microsoft.DotNet.PlatformAbstractions.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_187" Directory="WIX_0" Guid="D3CBCF42-10A0-48BA-8B1D-2A223574DAD4">
+				<File Id="WIX_187" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_188" Directory="WIX_0" Guid="91AB1242-E056-4E00-BDD4-9287859D83E1">
+				<File Id="WIX_188" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyInjection.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_189" Directory="WIX_0" Guid="B35461FD-90A8-4BC9-97AE-B9B17C78BBAC">
+				<File Id="WIX_189" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyModel.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_190" Directory="WIX_0" Guid="E1726934-5CD1-49BE-A504-1F6D1BD9E537">
+				<File Id="WIX_190" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Microsoft.Extensions.Logging.Abstractions.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_191" Directory="WIX_0" Guid="63C19EE3-75FA-47A7-B6CA-B9610D9251A1">
+				<File Id="WIX_191" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Microsoft.Extensions.Logging.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_192" Directory="WIX_0" Guid="F8C26FDD-D72E-4CEE-AF3B-DC1957BF1556">
+				<File Id="WIX_192" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Microsoft.Extensions.Options.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_193" Directory="WIX_0" Guid="E75151DD-E3F8-4959-B4FC-2F9F8AB2371A">
+				<File Id="WIX_193" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Microsoft.Extensions.Primitives.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_194" Directory="WIX_0" Guid="A7249C89-D418-4202-A7C4-C93A53A50D40">
+				<File Id="WIX_194" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Microsoft.Xaml.Behaviors.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_195" Directory="WIX_0" Guid="C91D0C60-C65F-42F1-AA2F-233E41016479">
+				<File Id="WIX_195" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Newtonsoft.Json.Bson.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_196" Directory="WIX_0" Guid="631423EF-111E-45B0-9D9F-BA7E7298B6A9">
+				<File Id="WIX_196" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Newtonsoft.Json.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_197" Directory="WIX_0" Guid="D548EBCD-C142-4116-81E7-7833CE4486D4">
+				<File Id="WIX_197" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\NLog.config" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_198" Directory="WIX_0" Guid="2B5A3F8F-7537-4F3D-9F40-C397537E9094">
+				<File Id="WIX_198" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\NLog.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_199" Directory="WIX_0" Guid="67957C3A-6AA4-4E87-BEA5-010F7F5B73B4">
+				<File Id="WIX_199" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\Polly.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_200" Directory="WIX_0" Guid="034B76A0-B4FF-434C-A666-8F488CBC6E38">
+				<File Id="WIX_200" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\System.IO.Ports.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_201" Directory="WIX_0" Guid="A0A67710-5E74-42E6-8667-58CD5EA4800F">
+				<File Id="WIX_201" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\System.Management.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_202" Directory="WIX_0" Guid="0518FB21-AB85-4228-A6DA-D5C4C02A5DA4">
+				<File Id="WIX_202" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\System.Net.Http.Formatting.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_203" Directory="WIX_0" Guid="1DED0737-E703-4E61-B3D4-FED4EEC584D8">
+				<File Id="WIX_203" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\WHS.deps.json" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_204" Directory="WIX_0" Guid="C5C7EBB3-FEC7-4514-8D21-8F14623BB2C3">
+				<File Id="WIX_204" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\WHS.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_205" Directory="WIX_0" Guid="E6ABF865-8308-4D40-9508-ADD9D01F55EC">
+				<File Id="WIX_205" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\WHS.dll.config" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_1" Directory="WIX_0" Guid="D2791F1B-E8E4-4540-820D-66BFF3D04F88">
+				<File Id="WIX_1" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\WHS.exe" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_206" Directory="WIX_0" Guid="049C5A97-6D40-4098-8E1B-A17A13D0AC7D">
+				<File Id="WIX_206" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\WHS.Infrastructure.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_207" Directory="WIX_0" Guid="0B75619E-07CC-4121-B55B-AE3FE8D520CD">
+				<File Id="WIX_207" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\WHS.Infrastructure.pdb" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_208" Directory="WIX_0" Guid="3CF9133D-32A3-4A72-887C-B1F6A628B6F1">
+				<File Id="WIX_208" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\WHS.pdb" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_209" Directory="WIX_0" Guid="202F4D44-A523-41EC-99AD-C5DCC73A0810">
+				<File Id="WIX_209" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\WHS.runtimeconfig.json" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_210" Directory="WIX_0" Guid="0C238FA6-DBD6-43B2-9060-FDA720FFF7AA">
+				<File Id="WIX_210" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\WPFLocalizeExtension.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_211" Directory="WIX_0" Guid="A29173F7-2170-45B8-9E84-7DA889089C7F">
+				<File Id="WIX_211" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\WPFLocalizeExtension.pdb" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="WIX_212" Directory="WIX_0" Guid="A18FBA5F-214F-4DCF-ADF1-AAECE0750BD6">
+				<File Id="WIX_212" Source="E:\ray-projects\仓储硬件服务\WHS-NET5-GIT\bin\Debug\net6.0-windows\XAMLMarkupExtensions.dll" ProcessorArchitecture="x86" KeyPath="yes" />
+			</Component>
+			<Component Id="ApplicationShortcut" Directory="ApplicationProgramsFolder" Guid="54230A6E-E434-405D-B182-60C0818DAC61">
+				<Shortcut Id="ApplicationStartMenuShortcut" Name="WHS" Description="WHS is a dispensing software" Target="[#WIX_1]" WorkingDirectory="APPLICATIONROOTDIRECTORY" />
+				<Shortcut Id="UninstallProduct" Name="卸载 WHS" Target="[SystemFolder]msiexec.exe" Arguments="/x [ProductCode]" Description="WHS" />
+				<Shortcut Id="DesktopShortcut" Directory="DesktopFolder" Name="WHS" Target="[#WIX_1]" WorkingDirectory="APPLICATIONROOTDIRECTORY" />
+				<RemoveFolder Id="CleanUpShortCut" Directory="ApplicationProgramsFolder" On="uninstall" />
+				<RegistryValue Root="HKCU" Key="Software\\WHS" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+			</Component>
+		</ComponentGroup>
+	</Fragment>
 </Wix>

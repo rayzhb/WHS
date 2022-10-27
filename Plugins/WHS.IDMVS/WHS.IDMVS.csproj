@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MahApps.Metro.IconPacks.FontAwesome" Version="4.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\WHS.Infrastructure\WHS.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Strings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Strings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="plugin.def">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="mkdir $(SolutionDir)$(OutDir)Plugins\WHS.IDMVS\&#xD;&#xA;&#xD;&#xA;mkdir $(SolutionDir)$(OutDir)Plugins\WHS.IDMVS\en&#xD;&#xA;xcopy  /y /s /e  &quot;$(TargetDir)en&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.IDMVS\en\&quot;&#xD;&#xA;&#xD;&#xA; &#xD;&#xA;mkdir $(SolutionDir)$(OutDir)Plugins\WHS.IDMVS\zh-CN&#xD;&#xA;xcopy  /y /s /e  &quot;$(TargetDir)zh-CN&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.IDMVS\zh-CN\&quot;&#xD;&#xA;&#xD;&#xA;xcopy /y &quot;$(TargetDir)&quot; &quot;$(SolutionDir)$(OutDir)Plugins\WHS.IDMVS\&quot; &#xD;&#xA;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.IDMVS\WHS.IDMVS.deps.json&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.IDMVS\Caliburn.Micro.Core.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.IDMVS\Caliburn.Micro.Platform.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.IDMVS\ControlzEx.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.IDMVS\MahApps.Metro.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.IDMVS\MahApps.Metro.IconPacks.Core.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.IDMVS\MahApps.Metro.IconPacks.FontAwesome.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.IDMVS\Microsoft.DotNet.PlatformAbstractions.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.IDMVS\Microsoft.Extensions.DependencyModel.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.IDMVS\Microsoft.Xaml.Behaviors.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.IDMVS\Newtonsoft.Json.Bson.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.IDMVS\Newtonsoft.Json.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.IDMVS\NLog.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.IDMVS\Polly.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.IDMVS\System.IO.Ports.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.IDMVS\System.Management.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.IDMVS\System.Net.Http.Formatting.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.IDMVS\WHS.Infrastructure.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.IDMVS\WHS.Infrastructure.pdb&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.IDMVS\WPFLocalizeExtension.dll&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.IDMVS\WPFLocalizeExtension.pdb&quot;&#xD;&#xA;del /f /q &quot;$(SolutionDir)$(OutDir)Plugins\WHS.IDMVS\XAMLMarkupExtensions.dll&quot;" />
+  </Target>
+</Project>

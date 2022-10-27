@@ -102,10 +102,10 @@ namespace WHS.Server
             }
 
             X509Certificate2 tlsCertificate = null;
-            if (ServerSettings.IsSsl)
-            {
-                tlsCertificate = new X509Certificate2(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "dotnetty.com.pfx"), "password");
-            }
+            //if (ServerSettings.IsSsl)
+            //{
+            //    tlsCertificate = new X509Certificate2(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "dotnetty.com.pfx"), "password");
+            //}
             try
             {
                 var bootstrap = new ServerBootstrap();
