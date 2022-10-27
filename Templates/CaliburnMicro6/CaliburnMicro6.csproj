@@ -3,12 +3,12 @@
   <PropertyGroup>
     <PackageType>Template</PackageType>
     <PackageVersion>1.0</PackageVersion>
-    <PackageId>CaliburnMicro5</PackageId>
-    <Title>CaliburnMicro5</Title>
+    <PackageId>CaliburnMicro6</PackageId>
+    <Title>CaliburnMicro6</Title>
     <Authors>rayzhb</Authors>
-    <Description>CaliburnMicro5</Description>
-    <PackageTags>CaliburnMicro5</PackageTags>
-    <TargetFrameworks>net5.0-windows</TargetFrameworks>
+    <Description>CaliburnMicro6</Description>
+    <PackageTags>CaliburnMicro6</PackageTags>
+    <TargetFrameworks>net6.0-windows</TargetFrameworks>
     <IncludeContentInPack>true</IncludeContentInPack>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <ContentTargetFolders>content</ContentTargetFolders>
