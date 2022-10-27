@@ -21,7 +21,8 @@ namespace WHS.Server.Handler
 {
     public sealed class WebSocketServerHandler : SimpleChannelInboundHandler<object>
     {
-        const string WebsocketPath = "/websocket";
+        const string _websocketPath = "/websocket";
+
 
         public WebSocketServerHandler()
         {
@@ -42,7 +43,7 @@ namespace WHS.Server.Handler
                     item.handleCommunicationClose?.Invoke(context.Channel.Id.ToString());
                 }
             }
-            System.Diagnostics.Debug.Write($"信道状态{ context.Channel.Active} 删除状态:{b}");
+            System.Diagnostics.Debug.Write($"信道状态{context.Channel.Active} 删除状态:{b}");
         }
 
         protected override void ChannelRead0(IChannelHandlerContext ctx, object msg)
@@ -82,11 +83,11 @@ namespace WHS.Server.Handler
             // Send the demo page and favicon.ico
             if ("/".Equals(req.Uri))
             {
+                string _webdir = AppContext.BaseDirectory + "Html\\";
 
-                string dir = AppContext.BaseDirectory + "Html\\";
-                if (System.IO.Directory.Exists(dir))
+                if (System.IO.Directory.Exists(_webdir))
                 {
-                    string file = dir + "index.html";
+                    string file = _webdir + "index.html";
                     if (System.IO.File.Exists(file))
                     {
                         var bytes = System.IO.File.ReadAllBytes(file);
@@ -106,11 +107,11 @@ namespace WHS.Server.Handler
             }
             if ("/vue_rcs".Equals(req.Uri))
             {
-
-                string dir = AppContext.BaseDirectory + "Html\\";
-                if (System.IO.Directory.Exists(dir))
+                string _webdir = AppContext.BaseDirectory + "Html\\vue_rcs";
+                if (System.IO.Directory.Exists(_webdir))
                 {
-                    string file = dir + "vue_rcs.html";
+
+                    string file = _webdir + "\\vue_rcs.html";
                     if (System.IO.File.Exists(file))
                     {
                         var bytes = System.IO.File.ReadAllBytes(file);
@@ -141,21 +142,25 @@ namespace WHS.Server.Handler
                 SendHttpResponse(ctx, req, res);
                 return;
             }
-            if ("/favicon.ico".Equals(req.Uri))
-            {
-                var res = new DefaultFullHttpResponse(Http11, NotFound);
-                SendHttpResponse(ctx, req, res);
-                return;
-            }
-            if (req.Uri.EndsWith(".css") || req.Uri.EndsWith(".js")
+            if (req.Uri.EndsWith(".css") || req.Uri.EndsWith(".js")||"/favicon.ico".Equals(req.Uri)
                 || req.Uri.EndsWith(".eot") || req.Uri.EndsWith(".svg") || req.Uri.EndsWith(".ttf") || req.Uri.EndsWith(".woff")
                 || req.Uri.EndsWith(".woff2") || req.Uri.EndsWith(".png") || req.Uri.EndsWith(".jpg") || req.Uri.EndsWith(".map"))
             {
+                string _webdir = AppContext.BaseDirectory + "Html";
+                string str_refer;
+                req.Headers.TryGetAsString(new AsciiString("Referer"), out str_refer);
+                if (!string.IsNullOrEmpty(str_refer))
+                {
+                    Uri uri = new Uri(str_refer);
+                    if (uri.AbsolutePath!="/")
+                    {
+                        _webdir+=uri.AbsolutePath.Replace('/', '\\');
+                    }
+                }
                 string location = req.Uri.Replace('/', '\\');
-                string dir = AppContext.BaseDirectory + "Html";
-                string file = dir + location;
+                string file = _webdir + location;
 
-                if (System.IO.File.Exists(dir + location))
+                if (System.IO.File.Exists(file))
                 {
                     var bytes = System.IO.File.ReadAllBytes(file);
                     IByteBuffer content = Unpooled.WrappedBuffer(bytes);
@@ -207,20 +212,31 @@ namespace WHS.Server.Handler
                 return;
             }
 
-            // Handshake
-            var wsFactory = new WebSocketServerHandshakerFactory(
-                GetWebSocketLocation(req), null, true, 5 * 1024 * 1024);
-            this.handshaker = wsFactory.NewHandshaker(req);
-            if (this.handshaker == null)
+
+            //websocket connect
+            if (_websocketPath.Equals(req.Uri))
             {
-                WebSocketServerHandshakerFactory.SendUnsupportedVersionResponse(ctx.Channel);
+
+                // Handshake
+                var wsFactory = new WebSocketServerHandshakerFactory(
+                GetWebSocketLocation(req), null, true, 5 * 1024 * 1024);
+                this.handshaker = wsFactory.NewHandshaker(req);
+                if (this.handshaker == null)
+                {
+                    WebSocketServerHandshakerFactory.SendUnsupportedVersionResponse(ctx.Channel);
+                }
+                else
+                {
+                    this.handshaker.HandshakeAsync(ctx.Channel, req);
+                }
+                //只记录WEBSOVKET的连接数
+                WebSocketsServer.s_onlineClients.TryAdd(ctx.Channel.Id.ToString(), ctx);
             }
             else
             {
-                this.handshaker.HandshakeAsync(ctx.Channel, req);
+                SendHttpResponse(ctx, req, new DefaultFullHttpResponse(Http11, NotFound));
+                return;
             }
-            //只记录WEBSOVKET的连接数
-            WebSocketsServer.s_onlineClients.TryAdd(ctx.Channel.Id.ToString(), ctx);
 
         }
 
@@ -335,7 +351,7 @@ namespace WHS.Server.Handler
         static string GetWebSocketLocation(IFullHttpRequest req)
         {
             bool result = req.Headers.TryGet(HttpHeaderNames.Host, out ICharSequence value);
-            string location = value.ToString() + WebsocketPath;
+            string location = value.ToString() + _websocketPath;
 
             if (ServerSettings.IsSsl)
             {
