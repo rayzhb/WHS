@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <None Remove="packages.lock.json" />
-    <None Remove="public.snk" />
   </ItemGroup>
   
 	<!--<Choose>
