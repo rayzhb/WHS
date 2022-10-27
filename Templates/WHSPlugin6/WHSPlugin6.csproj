@@ -2,12 +2,12 @@
   <PropertyGroup>
     <PackageType>Template</PackageType>
     <PackageVersion>1.0</PackageVersion>
-    <PackageId>WHSPlugin5</PackageId>
-    <Title>WHSPlugin5</Title>
+    <PackageId>WHSPlugin6</PackageId>
+    <Title>WHSPlugin6</Title>
     <Authors>rayzhb</Authors>
-    <Description>WHS Device Plugin 5.0</Description>
-    <PackageTags>WHSPlugin5</PackageTags>
-    <TargetFrameworks>netstandard2.0;net5.0-windows</TargetFrameworks>
+    <Description>WHS Device Plugin 6.0</Description>
+    <PackageTags>WHSPlugin6</PackageTags>
+    <TargetFrameworks>net6.0-windows</TargetFrameworks>
     <IncludeContentInPack>true</IncludeContentInPack>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <ContentTargetFolders>content</ContentTargetFolders>
@@ -21,7 +21,7 @@
     <Compile Remove="**\*" />
   </ItemGroup>
  
-  <ItemGroup Condition="'$(TargetFramework)' == 'net5.0-windows'">
+  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0-windows'">
     <PackageReference Include="System.Resources.Extensions" Version="6.0.0" />
   </ItemGroup>
  
