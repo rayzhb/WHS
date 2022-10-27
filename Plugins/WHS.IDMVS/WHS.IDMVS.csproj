@@ -42,17 +42,9 @@
     <None Update="plugin.def">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Libs\x64\**">
+    <None Update="Libs\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Libs\x86\**">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Libs\**" />
-
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
