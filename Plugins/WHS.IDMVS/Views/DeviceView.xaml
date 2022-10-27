@@ -7,7 +7,8 @@
       mc:Ignorable="d" 
       xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              xmlns:lex="http://wpflocalizeextension.codeplex.com"
-             lex:LocalizeDictionary.DesignCulture="zh-CN"
+      xmlns:Validations="clr-namespace:WHS.IDMVS.Validation"
+      lex:LocalizeDictionary.DesignCulture="zh-CN"
              lex:LocalizeDictionary.OutputMissingKeys="True"
              lex:ResxLocalizationProvider.DefaultAssembly="WHS.IDMVS"
              lex:ResxLocalizationProvider.DefaultDictionary="Strings"
@@ -15,6 +16,74 @@
              d:DesignHeight="450" d:DesignWidth="800">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*"></ColumnDefinition>
+            <ColumnDefinition Width="80*"></ColumnDefinition>
+            <ColumnDefinition Width="10*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Border  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Background="LightBlue" />
+        <Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24" FontWeight="Bold" Foreground="Black" Content="{lex:Loc Key=DeviceView.Title}"></Label>
+
+        <Grid Grid.Row="1" Grid.Column="1" Margin="3">
+            <Grid.BindingGroup>
+                <BindingGroup x:Name="dg"></BindingGroup>
+            </Grid.BindingGroup>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"></ColumnDefinition>
+                <ColumnDefinition Width="50*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="30"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="1" Grid.Column="0" BorderThickness="1,1,1,1" BorderBrush="Black"></Border>
+            <Border Grid.Row="1" Grid.Column="1" BorderThickness="1,1,1,1" BorderBrush="Black"></Border>
+            <Border Grid.Row="2" Grid.Column="0" BorderThickness="1,0,1,1" BorderBrush="Black"></Border>
+            <Border Grid.Row="2" Grid.Column="1" BorderThickness="1,0,1,1" BorderBrush="Black"></Border>
+            <Border Grid.Row="3" Grid.Column="0" BorderThickness="1,0,1,1" BorderBrush="Black"></Border>
+            <Border Grid.Row="3" Grid.Column="1" BorderThickness="1,0,1,1" BorderBrush="Black"></Border>
+            <Border Grid.Row="4" Grid.Column="0" BorderThickness="1,0,1,1" BorderBrush="Black"></Border>
+            <Border Grid.Row="4" Grid.Column="1" BorderThickness="1,0,1,1" BorderBrush="Black"></Border>
+            <Border Grid.Row="5" Grid.Column="0" BorderThickness="1,0,1,1" BorderBrush="Black"></Border>
+            <Border Grid.Row="5" Grid.Column="1" BorderThickness="1,0,1,1" BorderBrush="Black"></Border>
+            <Border Grid.Row="6" Grid.Column="0" BorderThickness="1,0,1,1" BorderBrush="Black"></Border>
+            <Border Grid.Row="6" Grid.Column="1" BorderThickness="1,0,1,1" BorderBrush="Black"></Border>
+
+            <WrapPanel  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                <TextBlock x:Name="textBlock" TextWrapping="Wrap"  Text="{Binding ErrorText}" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FFFD0808" FontWeight="Bold" FontSize="24">
+                </TextBlock>
+            </WrapPanel>
+            <Label Grid.Row="1" Grid.Column="0" Content="{lex:Loc Key=DeviceView.Label.Camera}" HorizontalAlignment="Left" Margin="2" FontWeight="Bold" FontSize="14"></Label>
+            <ComboBox  Grid.Row="1" Grid.Column="1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="3" Width="auto" Height="auto" 
+                       Controls:TextBoxHelper.Watermark="{lex:Loc Key=DeviceView.Camera.Watermark}"
+                          DisplayMemberPath="Text"
+                          IsEditable="False"
+                          IsEnabled="True"
+                          ItemsSource="{Binding CameraSource}"
+                          SelectedValuePath="Value"
+                          SelectedIndex="{Binding CameraSelectedIndex, Mode=TwoWay}"
+                         >
+                <ComboBox.SelectedItem>
+                    <Binding Path="Camera" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <Validations:NullOrEmptyValidation/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </ComboBox.SelectedItem>
+            </ComboBox>
+        </Grid>
     </Grid>
 </Page>

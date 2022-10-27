@@ -61,7 +61,25 @@ namespace WHS.IDMVS.Resources {
         }
         
         /// <summary>
-        ///   查找类似 标题 的本地化字符串。
+        ///   查找类似 选择相机 的本地化字符串。
+        /// </summary>
+        public static string DeviceView_Camera_Watermark {
+            get {
+                return ResourceManager.GetString("DeviceView.Camera.Watermark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 相机 的本地化字符串。
+        /// </summary>
+        public static string DeviceView_Label_Camera {
+            get {
+                return ResourceManager.GetString("DeviceView.Label.Camera", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 读码平台-广东邮政 的本地化字符串。
         /// </summary>
         public static string DeviceView_Title {
             get {

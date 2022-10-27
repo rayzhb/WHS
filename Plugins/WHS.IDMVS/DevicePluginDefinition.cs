@@ -1,13 +1,17 @@
 ﻿using Caliburn.Micro;
 using System;
 using System.Collections.Generic;
+using System.DirectoryServices;
+using System.IO;
 using System.IO.Ports;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-
+using System.Windows.Shapes;
+using WHS.IDMVS.SDK;
 using WHS.Infrastructure;
 using WHS.Infrastructure.Config;
 
@@ -68,13 +72,21 @@ namespace WHS.IDMVS
         {
             get; set;
         }
+        private IntPtr _deviceHandle = IntPtr.Zero;
 
         public override void Init()
         {
             base.Init();
-            GlobalContext.SimpleContainer.PerRequest<ViewModels.DeviceViewModel>();
+            GlobalContext.SimpleContainer.Singleton<ViewModels.DeviceViewModel>();
             JsonConfig = new JsonConfig(FileName);
-
+            var dir = Directory.GetParent(FileName);
+            var ProcessArchitecture = GlobalContext.OSArchitecture;
+            string dictory = System.IO.Path.GetDirectoryName(dir + @"\Libs\" + ProcessArchitecture.ToString().ToLower()+@"\");
+            List<string> depends= new List<string>();
+            depends.Add(dictory+"\\CPythonExtend.dll");
+            depends.Add(dictory+"\\python27.dll");
+            depends.Add(dictory+"\\RulerFilter.dll");
+            _deviceHandle =WindowsLoadLibrary.Instance.LoadLibrary(dictory+"\\MVIDCodeReader.dll", depends);
 
         }
 
@@ -84,6 +96,10 @@ namespace WHS.IDMVS
             base.Close();
             JsonConfig?.Dispose();
             GlobalContext.SimpleContainer.UnregisterHandler<ViewModels.DeviceViewModel>();
+            if (_deviceHandle!= IntPtr.Zero)
+            {
+                WindowsLoadLibrary.Instance.UnLoadLibrary(_deviceHandle);
+            }
         }
 
         /// <summary>
