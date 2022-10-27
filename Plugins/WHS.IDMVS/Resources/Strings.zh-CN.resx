@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DeviceView.Camera.Watermark" xml:space="preserve">
+    <value>选择相机</value>
+  </data>
+  <data name="DeviceView.Label.Camera" xml:space="preserve">
+    <value>相机</value>
+  </data>
   <data name="DeviceView.Title" xml:space="preserve">
-    <value>标题</value>
+    <value>读码平台-广东邮政</value>
   </data>
   <data name="PluginDisplayText" xml:space="preserve">
     <value>海康IDMVS</value>

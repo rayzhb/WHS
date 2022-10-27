@@ -3,5 +3,5 @@
   <!--anycpu x64 x86  arm arm64 wasm -->
   <runPlatform target="anycpu" />
    <!--Hot Reload-->
-  <enableHotReload>true</enableHotReload>
+  <enableHotReload>false</enableHotReload>
 </plugin>
